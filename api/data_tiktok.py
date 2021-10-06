@@ -14,16 +14,16 @@ get_total_video = str(user_obj['userInfo']['stats']['videoCount'])
 get_url = str(user_obj['seoProps']['metaParams']['canonicalHref'])
 
 def info():
-  return(':clap: Info Account Bang Dea :clap:\n\n' + 'Follower saat ini: **' + f'{get_follower:,}' + '**\n' + 'Jumlah Likes: **' + f'{get_likes:,}' + '**\n' + 'Total video tayang: **' + get_total_video + '**\n' + 'Link tiktok: `*' + get_url + '*`' + '\n\n:robot: Thanks cuy udah follow bang dea! :robot:')
+  return(':clap: Info Account Bang Dea :clap:\n\n' + 'Follower saat ini: **' + get_follower + '** orang\n' + 'Jumlah Likes: **' + get_likes + '** suka\n' + 'Total video tayang: **' + get_total_video + '** video\n' + 'Link tiktok: `*' + get_url + '*`' + '\n\n:robot: Thanks cuy udah follow bang dea! :robot:')
 
 def last_follower():
-  return('Jumlah follower bang dea saat ini: ' + '**' + f'{get_follower:,}' + '**')
+  return('Jumlah follower bang dea saat ini: ' + '**' + get_follower + '** orang')
 
 def last_liked():
-  return('Jumlah like bang dea saat ini: ' + '**' + f'{get_likes:,}' + '**')
+  return('Jumlah like bang dea saat ini: ' + '**' + get_likes + '** suka')
 
 def total_video():
-  return('Total video bang dea saat ini: ' + '**' + f'{get_total_video:,}' + '**')
+  return('Total video bang dea saat ini: ' + '**' + get_total_video + '** video')
 
 def url():
   return('Link tiktok bang dea: ' + '`' + get_url + '`')
