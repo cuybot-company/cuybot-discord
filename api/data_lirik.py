@@ -3,8 +3,6 @@ import json
 
 
 def get_lirik(lagu):
-    if lagu == '':
-        return ':clap: ketik judul lagunya atau berikut juga dengan nama bandnya :clap:'
     list_lagu = requests.get(
         'https://api-song-lyrics.herokuapp.com/search?q=' + lagu)
     datas = json.loads(list_lagu.text)
