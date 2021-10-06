@@ -9,4 +9,4 @@ class quote(object):
         if any(x in self.user_message for x in c.request_quote):
             await self.bot_send('Tunggu sebentar saya carikan dulu quotes menarik untuk kamu ')
             data = api.get_quotes()
-            await self.bot_send(data)
+            return await self.bot_send(data)

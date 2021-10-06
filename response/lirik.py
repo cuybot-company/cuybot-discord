@@ -10,4 +10,4 @@ class lirik(object):
         if self.user_message.startswith('cuy/lirik'):
             requested_song = self.user_message.split(" ", 1)[1]
             daftar_lagu = api.get_lirik(requested_song)
-            await self.bot_send(daftar_lagu)
+            return await self.bot_send(daftar_lagu)
