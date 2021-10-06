@@ -12,6 +12,6 @@ def data_news(param):
             link = data['posts']['link']
             date = data['posts']['pubDate']
             description = data['posts']['description']
-            return('Berita teknologi hari ini: \n' + title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n')
+            return('Berita '+param+'hari ini: \n' + title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n')
     else:
         return('saat ini tidak ada data berita')
