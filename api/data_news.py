@@ -7,19 +7,11 @@ def data_news():
     news = datas['data']['posts']
     
     if len(news) > 0 :
-        # for data in news:
-        #     title = data['title']
-        #     link = data['link']
-        #     date = data['pubDate']
-        #     description = data['description']
-            return('Berita teknologi hari ini: \n' + beritas(news))
+        for data in news:
+            title = data['title']
+            link = data['link']
+            date = data['pubDate']
+            description = data['description']
+            return('Berita teknologi hari ini: \n' + title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n')
     else:
         return('saat ini tidak ada data berita')
-    
-def beritas(news):
-    for data in news:
-        title = data['title']
-        link = data['link']
-        date = data['pubDate']
-        description = data['description']
-        'Judul: '+title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n'
