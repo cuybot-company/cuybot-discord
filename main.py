@@ -10,6 +10,7 @@ from response.quote import quote
 from response.lirik import lirik
 from response.news import news
 from response.tiktok import *
+from response.mobile import mobile
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -36,6 +37,7 @@ async def on_message(message):
     _lirik = lirik(user_message, bot_send)
     _news = news(user_message, bot_send)
     _tiktok = tiktok(user_message, bot_send)
+    _mobile = mobile(user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -49,7 +51,7 @@ async def on_message(message):
     await _tiktok.likes()
     await _tiktok.videos()
     await _tiktok.urls()
-    
+    await _mobile.find_latest()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
