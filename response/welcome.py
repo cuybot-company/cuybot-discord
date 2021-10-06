@@ -6,4 +6,4 @@ class bot_welcome(object):
     self.bot_send = bot_send
   async def message(self):
     if any(x in self.user_message for x in c.request_welcome):
-      return await self.bot_send(':partying_face: Oy cuy! :partying_face: \n\nperkenalkan cuy gw bot buatannya dea dan tim :yum:\ngw siap bantu ngasih info info sesuatu yang lu butuhin')
+      await self.bot_send(':partying_face: Oy cuy! :partying_face: \n\nperkenalkan cuy gw bot buatannya dea dan tim :yum:\ngw siap bantu ngasih info info sesuatu yang lu butuhin')

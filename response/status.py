@@ -6,4 +6,4 @@ class bot_status:
     self.bot_send = bot_send
   async def check(self):
     if any(word in self.user_message for word in c.request_stat):
-      return await self.bot_send(':partying_face: CuyBot Masih Aktif! :partying_face:')
+      await self.bot_send(':partying_face: CuyBot Masih Aktif! :partying_face:')

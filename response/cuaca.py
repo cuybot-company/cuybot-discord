@@ -6,4 +6,4 @@ class cuaca(object):
         if user_message.startswith('cuy/cuaca'):
             print('request => ' + user_message)
             data = api.get_cuaca()
-            return await bot_send(data)
+            await bot_send(data)
