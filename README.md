@@ -1,2 +1,2 @@
 # cuybot-discord
-Development Discord bot
+Development Discord bot by CUYBOT Company
