@@ -10,7 +10,7 @@ api = TikTokAPI(cookie=cookie)
 user_obj = api.getUserByName("dea.afrizal")
 get_follower = str(user_obj['userInfo']['stats']['followerCount'])
 get_likes = str(user_obj['userInfo']['stats']['heart'])
-get_total_video = get_follower = str(user_obj['userInfo']['stats']['videoCount'])
+get_total_video = str(user_obj['userInfo']['stats']['videoCount'])
 get_url = str(user_obj['seoProps']['metaParams']['canonicalHref'])
 
 def info():
