@@ -44,7 +44,7 @@ async def on_message(message):
     await _quotes.find_one()
     await _lirik.find_one()
     await _news.find_one()
-    await _tiktok.get_latest_follower()
+    await _tiktok.find_last()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))

@@ -1,12 +1,12 @@
-from TikTokApi import TikTokApi
-tt_api = TikTokApi()
+from TikTokAPI import TikTokAPI
 
-class tiktok(object):
-  def __init__(self, user_message, bot_send):
-    self.user_message = user_message
-    self.bot_send = bot_send
-    
-    async def get_latest_follower(self):
-      user_videos = tt_api.byUsername('dea.afrizal', count=1)
-      tiktok_id = tt_api.getUser('tiktok')['userInfo']['user']['id']
-      return(user_videos)
+cookie = {
+  "s_v_web_id": "verify_kuf91wie_NyAzMIdq_1Efg_4DWC_94uG_nITO0viLQgVo",
+  "tt_webid": "7014103910529172993"
+}
+api = TikTokAPI(cookie=cookie)
+
+def last_follower():
+  user_obj = api.getUserByName("dea.afrizal")
+  print('user obj => ' + user_obj)
+  return user_obj
