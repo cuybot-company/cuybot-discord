@@ -9,10 +9,13 @@ def data_news():
     if len(news) > 0 :
         for data in news:
             title = data['title']
-            result = beritas(title)
+            link = data['link']
+            date = data['pubDate']
+            description = data['description']
+            result = beritas(title, link, date, description)
         return(result)
     else:
         return('saat ini tidak ada data berita')
     
-def beritas(title):
-    return(title)
+def beritas(title, link, date, description):
+    return(title + '\n' + link + '\n' + date + '\n' + description)
