@@ -10,6 +10,7 @@ class lirik(object):
         if any(lyrics in self.user_message for lyrics in c.request_lyric):
             if self.user_message.isspace() == 'false':
                 return ':clap: ketik judul lagunya atau berikut juga dengan nama bandnya :clap:'
-            requested_song = self.user_message.split(" ", 1)[1]
-            daftar_lagu = api.get_lirik(requested_song)
-            await self.bot_send(daftar_lagu)
+            else:
+                requested_song = self.user_message.split(" ", 1)[1]
+                daftar_lagu = api.get_lirik(requested_song)
+                await self.bot_send(daftar_lagu)
