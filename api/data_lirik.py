@@ -3,12 +3,14 @@ import json
 
 
 def get_lirik(lagu):
+    if lagu == '':
+        return ':clap: ketik judul lagunya atau berikut juga dengan nama bandnya :clap:'
     list_lagu = requests.get(
         'https://api-song-lyrics.herokuapp.com/search?q=' + lagu)
     datas = json.loads(list_lagu.text)
     lirik = datas['data']
     if len(lirik) > 1:
-        return('mohon judul lebih spesifik lagi, terlalu banyak list (fitur masih ongoing cuy).\ncoba cari misalnya cuy/lirik kala cinta menggoda')
+        return(':clap: mohon judul lebih spesifik lagi, terlalu banyak list (fitur masih ongoing cuy). :clap:\ncoba cari misalnya: `cuy/lirik avenged sevenfold unholy` \n\ndisarankan menggunakan nama band nya juga supaya pencarian optimal.')
     elif len(lirik) == 1:
         for data in lirik:
             liriks = data['songLyrics']
