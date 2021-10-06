@@ -8,8 +8,8 @@ class lirik(object):
 
     async def find_one(self):
         if any(lyrics in self.user_message for lyrics in c.request_lyric):
-
-          if self.user_message.isspace() == 0:
+          data = self.user_message.split(" ", 1)
+          if len(data) == 1:
             await self.bot_send(':clap: ketik judul lagunya atau berikut juga dengan nama bandnya :clap:')
           else:
             requested_song = self.user_message.split(" ", 1)[1]
