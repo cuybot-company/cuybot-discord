@@ -11,6 +11,7 @@ from response.lirik import lirik
 from response.news import news
 from response.tiktok import *
 from response.mobile import mobile
+from response.predict_age import predict_age
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -38,6 +39,7 @@ async def on_message(message):
     _news = news(user_message, bot_send)
     _tiktok = tiktok(user_message, bot_send)
     _mobile = mobile(user_message, bot_send)
+    _predictAge = predict_age(user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -52,6 +54,7 @@ async def on_message(message):
     await _tiktok.videos()
     await _tiktok.urls()
     await _mobile.find_latest()
+    await _predictAge.prediction()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
