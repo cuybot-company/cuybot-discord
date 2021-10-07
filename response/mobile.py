@@ -12,7 +12,7 @@ class mobile(object):
         await self.bot_send(':clap: tambahkan merk hp :clap:')
       else:
         merk_hp = self.user_message.split(" ", 1)[1]
-        if merk_hp == 'baru':
+        if any(x in merk_hp for x in c.request_new_mobile):
           data = api.get_mobile_latest()
           data_mobile = ''
           length = len(data) - 1
@@ -24,4 +24,8 @@ class mobile(object):
               break
           await self.bot_send(data_mobile)
         else:
-          await self.bot_send(':clap: saya tidak mengerti apa yang anda maksud :clap:')
+          data = api.get_mobile_spec(merk_hp)
+          if data == 'empty':
+            await self.bot_send(':clap: Maaf saya tidak tau handphone '+ merk_hp + ' :clap:')
+          else:
+            await self.bot_send.reply('> `Brand : ' + data['brand'] + '`'+'\n > `Nama handphone : ' + data['phone_name'] + '`'+'\n > `Release : '+data['release_date']+ '`'+'\n > `Dimensi : '+data['dimension']+ '`'+'\n > `OS : '+data['os']+'`'+'\n > `Storage : '+data['storage']+ '`'+'\n > `Network : '+data['specifications'][0]['specs'][0]['val'][0]+ '`'+'\n > `Status : '+data['specifications'][1]['specs'][1]['val'][0]+'`'+'\n > `Berat : '+ data['specifications'][2]['specs'][1]['val'][0] + '`'+'\n > `Build : ' + data['specifications'][2]['specs'][2]['val'][0] + '`'+'\n > `SIM : ' + data['specifications'][2]['specs'][3]['val'][0] + '`', mention_author=True)
