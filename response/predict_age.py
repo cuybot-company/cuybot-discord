@@ -9,9 +9,9 @@ class predict_age(object):
     if self.user_message.startswith('cuy/usia'):
         data = self.user_message.split(" ", 1)
         if len(data) == 1:
-            await self.bot_send.reply(':x: Masukin dulu nama lu cuy :x:')
+            await self.bot_send(':x: Masukin dulu nama lu cuy :x:')
         else:
             requested_name = self.user_message.split(" ", 1)[1]
             predicting = api.predict(requested_name)
-            await self.bot_send.reply(predicting)
+            await self.bot_send(predicting)
 

@@ -28,7 +28,7 @@ async def on_message(message):
         return
 
     user_message = message.content
-    bot_send = message.channel.send
+    bot_send = message.channel.reply
 
     _botHelp = bot_help(user_message, bot_send)
     _botStatus = bot_status(user_message, bot_send)
