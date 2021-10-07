@@ -12,7 +12,7 @@ class mobile(object):
         await self.bot_send(':clap: tambahkan merk hp :clap:')
       else:
         merk_hp = self.user_message.split(" ", 1)[1]
-        if merk_hp == 'baru':
+        if any(x in merk_hp for x in c.request_new_mobile):
           data = api.get_mobile_latest()
           data_mobile = ''
           length = len(data) - 1
