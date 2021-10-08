@@ -24,4 +24,22 @@ class mobile(object):
               break
           await self.bot_send(data_mobile)
         else:
-          await self.bot_send(':clap: saya tidak mengerti apa yang anda maksud :clap:')
+          data = api.get_mobile_spec(merk_hp)
+          if data == 'empty':
+            await self.bot_send('maaf saya tidak menemukan data hp yang kamu maksud\nketikan cuy/hp [spasi] brand [spasi] merk')
+          else:
+            data_spec = data['specifications']
+            spec_hp = ''
+            length_spec = len(data_spec) - 1
+            idx = 0
+            while idx < length_spec:
+              idx_spec = 0
+              while idx_spec < len(data_spec[idx]['specs']) - 1:
+                spec_hp = spec_hp + '\n '+ data_spec[idx]['specs'][idx_spec]['key'] + ': ' + data_spec[idx]['specs'][idx_spec]['val'][0]
+                idx_spec += 1
+                if idx_spec == len(data_spec[idx]['specs']) - 1:
+                  break
+              idx += 1
+              if idx == length_spec:
+                break
+            await self.bot_send('**'+data['brand'] + ' ' + data['phone_name'] + '**' + '\n ' + spec_hp )
