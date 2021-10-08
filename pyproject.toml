@@ -8,6 +8,7 @@ authors = ["CUYBOT Company <afrizaldea94@gmail.com>"]
 python = "^3.8"
 discord = "^1.7.3"
 Flask = "^2.0.1"
+gspread = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 
