@@ -8,5 +8,9 @@ class news(object):
 
     async def find_one(self):
         if self.user_message.startswith('cuy/berita'):
-            daftar_news = api.data_news()
-            await self.bot_send(daftar_news)
+            parameter = self.user_message.split()
+            if len(parameter) == 1:
+                await self.bot_send('masukkan kategori berita, contoh: \n`/berita nasional`\n`/berita internasional`\n`/berita ekonomi`\n`/berita olahraga`\n`/berita teknologi`\n`/berita hiburan`')
+            else:
+                daftar_news = api.data_news(self.user_message)
+                await self.bot_send(daftar_news)
