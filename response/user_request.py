@@ -1,6 +1,6 @@
 import api.data_user_request as api
 
-class user_request:
+class User_Request:
   def __init__(self, sender, user_message, bot_send):
     self.sender = sender
     self.user_message = user_message
