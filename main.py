@@ -6,6 +6,7 @@ from response.status import Bot_Status
 from response.welcome import Bot_Welcome
 from response.help import Bot_Help
 from response.covid import Covid
+from response.dota import Dota
 from response.quote import Quote
 from response.lirik import Lirik
 from response.news import News
@@ -35,6 +36,7 @@ async def on_message(message):
     _botStatus = Bot_Status(user_message, bot_send)
     _botWelcome = Bot_Welcome(user_message, bot_send)
     _covid = Covid(user_message, bot_send)
+    _dota = Dota(user_message, bot_send)
     _quotes = Quote(user_message, bot_send)
     _lirik = Lirik(user_message, bot_send)
     _news = News(user_message, bot_send)
@@ -46,6 +48,7 @@ async def on_message(message):
     await _botStatus.check()
     await _botWelcome.message()
     await _covid.find_latest()
+    await _dota.live()
     await _quotes.find_one()
     await _lirik.find_one()
     await _news.find_one()
