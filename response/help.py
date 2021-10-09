@@ -1,6 +1,6 @@
 import helper.constants as c
 
-class bot_help(object):
+class Bot_Help(object):
   def __init__(self, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send

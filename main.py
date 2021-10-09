@@ -2,17 +2,16 @@ import os
 import locale
 import helper.constants as c
 
-from response.status import bot_status
-from response.welcome import bot_welcome
-from response.help import bot_help
-from response.covid import covid
-from response.quote import quote
-from response.lirik import lirik
-from response.news import news
-from response.tiktok import *
-from response.mobile import mobile
-from response.predict_age import predict_age
-from response.user_request import user_request
+from response.status import Bot_Status
+from response.welcome import Bot_Welcome
+from response.help import Bot_Help
+from response.covid import Covid
+from response.quote import Quote
+from response.lirik import Lirik
+from response.news import News
+from response.mobile import Mobile
+from response.predict_age import Predict_Age
+from response.user_request import User_Request
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -32,17 +31,16 @@ async def on_message(message):
     user_message = message.content
     bot_send = message.reply
 
-    _botHelp = bot_help(user_message, bot_send)
-    _botStatus = bot_status(user_message, bot_send)
-    _botWelcome = bot_welcome(user_message, bot_send)
-    _covid = covid(user_message, bot_send)
-    _quotes = quote(user_message, bot_send)
-    _lirik = lirik(user_message, bot_send)
-    _news = news(user_message, bot_send)
-    _tiktok = tiktok(user_message, bot_send)
-    _mobile = mobile(user_message, bot_send)
-    _predictAge = predict_age(user_message, bot_send)
-    _userRequest = user_request(sender, user_message, bot_send)
+    _botHelp = Bot_Help(user_message, bot_send)
+    _botStatus = Bot_Status(user_message, bot_send)
+    _botWelcome = Bot_Welcome(user_message, bot_send)
+    _covid = Covid(user_message, bot_send)
+    _quotes = Quote(user_message, bot_send)
+    _lirik = Lirik(user_message, bot_send)
+    _news = News(user_message, bot_send)
+    _mobile = Mobile(user_message, bot_send)
+    _predictAge = Predict_Age(user_message, bot_send)
+    _userRequest = User_Request(sender, user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -51,11 +49,6 @@ async def on_message(message):
     await _quotes.find_one()
     await _lirik.find_one()
     await _news.find_one()
-    await _tiktok.account_info()
-    await _tiktok.followers()
-    await _tiktok.likes()
-    await _tiktok.videos()
-    await _tiktok.urls()
     await _mobile.find_latest()
     await _predictAge.prediction()
     await _userRequest.save()
