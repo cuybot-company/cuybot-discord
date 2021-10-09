@@ -12,7 +12,7 @@ request_g_credentials = {
     "type": os.getenv("G_TYPE"),
     "project_id": os.getenv("G_PROJECT_ID"),
     "private_key_id": os.getenv("G_PRIVATE_KEY_ID"),
-    "private_key": os.getenv("G_PRIVATE_KEY"),
+    "private_key": "-----BEGIN PUBLIC KEY-----\n" + os.getenv("G_PRIVATE_KEY") + "\n-----END PUBLIC KEY-----",
     "client_email": os.getenv("G_CLIENT_EMAIL"),
     "client_id": os.getenv("G_CLIENT_ID"),
     "auth_uri": os.getenv("G_AUTH_URI"),
