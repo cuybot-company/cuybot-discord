@@ -13,6 +13,7 @@ from response.tiktok import *
 from response.mobile import mobile
 from response.predict_age import predict_age
 from response.user_request import user_request
+from response.play_game import play_game
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -43,6 +44,8 @@ async def on_message(message):
     _mobile = mobile(user_message, bot_send)
     _predictAge = predict_age(user_message, bot_send)
     _userRequest = user_request(sender, user_message, bot_send)
+    _botPlayGame = play_game(user_message, bot_send)
+
     
     await _botHelp.info()
     await _botStatus.check()
