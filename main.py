@@ -12,6 +12,7 @@ from response.news import News
 from response.mobile import Mobile
 from response.predict_age import Predict_Age
 from response.user_request import User_Request
+from response.reputation import Reputation
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -30,6 +31,7 @@ async def on_message(message):
     sender = message.author
     user_message = message.content
     bot_send = message.reply
+    bot_say = message.channel.send
 
     _botHelp = Bot_Help(user_message, bot_send)
     _botStatus = Bot_Status(user_message, bot_send)
@@ -41,6 +43,7 @@ async def on_message(message):
     _mobile = Mobile(user_message, bot_send)
     _predictAge = Predict_Age(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
+    _reputation = Reputation(sender, user_message, bot_say)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -52,6 +55,8 @@ async def on_message(message):
     await _mobile.find_latest()
     await _predictAge.prediction()
     await _userRequest.save()
+    await _reputation.check()
 
 liveserver()
-c.client.run(os.getenv('TOKEN'))
+#c.client.run(os.getenv('TOKEN'))
+c.client.run('ODk2MzA1NDc1OTEyNjE4MDA0.YWFLhg.poQJGwIbeqD5Qrb4zD2hy8AKmSE')
