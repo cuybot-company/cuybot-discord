@@ -1,6 +1,6 @@
 import helper.constants as c
 
-class paly_game(object):
+class play_game(object):
   def __init__(self, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send
