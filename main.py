@@ -40,7 +40,7 @@ async def on_message(message):
     _quotes = quote(user_message, bot_send)
     _lirik = lirik(user_message, bot_send)
     _news = news(user_message, bot_send)
-    _tiktok = tiktok(user_message, bot_send)
+    # _tiktok = tiktok(user_message, bot_send)
     _mobile = mobile(user_message, bot_send)
     _predictAge = predict_age(user_message, bot_send)
     _userRequest = user_request(sender, user_message, bot_send)
