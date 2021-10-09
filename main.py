@@ -9,7 +9,7 @@ from response.covid import covid
 from response.quote import quote
 from response.lirik import lirik
 from response.news import news
-from response.tiktok import *
+# from response.tiktok import *
 from response.mobile import mobile
 from response.predict_age import predict_age
 from response.user_request import user_request
@@ -54,14 +54,15 @@ async def on_message(message):
     await _quotes.find_one()
     await _lirik.find_one()
     await _news.find_one()
-    await _tiktok.account_info()
-    await _tiktok.followers()
-    await _tiktok.likes()
-    await _tiktok.videos()
-    await _tiktok.urls()
+    # await _tiktok.account_info()
+    # await _tiktok.followers()
+    # await _tiktok.likes()
+    # await _tiktok.videos()
+    # await _tiktok.urls()
     await _mobile.find_latest()
     await _predictAge.prediction()
     await _userRequest.save()
+    await _botPlayGame.message()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
