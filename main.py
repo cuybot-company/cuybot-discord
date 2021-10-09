@@ -58,5 +58,4 @@ async def on_message(message):
     await _reputation.check()
 
 liveserver()
-#c.client.run(os.getenv('TOKEN'))
-c.client.run('ODk2MzA1NDc1OTEyNjE4MDA0.YWFLhg.poQJGwIbeqD5Qrb4zD2hy8AKmSE')
+c.client.run(os.getenv('TOKEN'))
