@@ -13,6 +13,7 @@ from response.news import News
 from response.mobile import Mobile
 from response.predict_age import Predict_Age
 from response.user_request import User_Request
+from response.mobilelegends import Mobile_Legends
 
 from config.liveserver import liveserver
 locale.setlocale(locale.LC_ALL, '')
@@ -42,8 +43,10 @@ async def on_message(message):
     _news = News(user_message, bot_send)
     _mobile = Mobile(user_message, bot_send)
     _predictAge = Predict_Age(user_message, bot_send)
+    _mobilelegends = Mobile_Legends(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
     
+
     await _botHelp.info()
     await _botStatus.check()
     await _botWelcome.message()
@@ -54,6 +57,7 @@ async def on_message(message):
     await _news.find_one()
     await _mobile.find_latest()
     await _predictAge.prediction()
+    await _mobilelegends.redeem()
     await _userRequest.save()
 
 liveserver()
