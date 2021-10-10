@@ -42,14 +42,14 @@ def info(username):
         message = """
         :information_source: Informasi Akun TikTok :information_source: 
 
-    Link Tiktok: https://www.tiktok.com/{}
-    bio: {}
-    Following: {}
-    Followers: {}
-    Fans: {}
-    Likes: {}
-    Videos: {}
-    Verified: {}
+Link Tiktok: https://www.tiktok.com/{}
+bio: {}
+Following: {}
+Followers: {}
+Fans: {}
+Likes: {}
+Videos: {}
+Verified: {}
 
     """.format(username, bio, following, followers, fans, hearts, videos, verified)
 
