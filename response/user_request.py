@@ -1,6 +1,5 @@
 import api.data_user_request as api
-import helper.discord as d
-
+import discord
 class User_Request:
   def __init__(self, sender, user_message, bot_send):
     self.sender = sender
@@ -10,10 +9,17 @@ class User_Request:
     if self.user_message.startswith('cuy/request'):
         data = self.user_message.split(" ", 1)
         if len(data) == 1:
-            embed = d.embeed("Request", ":clap: ketik request apa yang mau lu minta cuy! :clap:")
+            embed=discord.Embed(
+              title="Request", 
+              description=":clap: ketik request apa yang mau lu minta cuy! :clap:", 
+              color=discord.Color.random()
+            )
             await self.bot_send(embed=embed)
         else:
             api.insert(self.sender, data[1])
-
-            embed = d.embeed("Request", "Thanks cuy, request lu berhasil **tersimpan** di **database** kita.\n\n*notes: tolong gunain fitur ini dengan bijak ya!*\n\nsemua data request dari kalian bisa di follow up via private channel #request.\n**Dan hanya bisa di akses oleh member dengan privilage minimal @superior**")
+            embed=discord.Embed(
+              title="Request", 
+              description="Thanks cuy, request lu berhasil **tersimpan** di **database** kita.\n\n*notes: tolong gunain fitur ini dengan bijak ya!*\n\nsemua data request dari kalian bisa di follow up via private channel #request.\n**Dan hanya bisa di akses oleh member dengan privilage minimal @superior**", 
+              color=discord.Color.random()
+            )
             await self.bot_send(embed=embed)
