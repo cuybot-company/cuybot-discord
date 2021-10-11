@@ -1,8 +1,11 @@
 import discord
 
-def embeed(title, desc, arr = {}):
-    embed = discord.Embed(title=title, description=desc, color=discord.Color.random())
-    
+def embeed(title, desc, color="", arr = {}):
+    if color == "":
+        color = discord.Color.random()
+
+    embed = discord.Embed(title=title, description=desc, color=color)
+
     if len(arr) > 0:
 
         if "footer" in arr:
