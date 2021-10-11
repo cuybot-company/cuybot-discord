@@ -6,7 +6,7 @@ class Bot_Help(object):
     self.user_message = user_message
     self.bot_send = bot_send
   async def info(self):
-    if any(help in self.user_message for help in c.request_help):
+    if self.user_message.startswith('cuy/help'):
       arr = {
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
