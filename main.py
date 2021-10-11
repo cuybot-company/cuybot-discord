@@ -70,5 +70,4 @@ async def on_message(message):
     await _reputation.check()
     await _wallpaper.fetch()
 liveserver()
-# c.client.run(os.getenv('TOKEN'))
-c.client.run("ODUxNTAxMTU2NTMwMzg4OTkz.YL5MPw.D9d3bzhQaxvn5ahKPy7In5d-UjI")
+c.client.run(os.getenv('TOKEN'))
