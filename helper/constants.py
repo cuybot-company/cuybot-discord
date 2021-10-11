@@ -11,6 +11,7 @@ request_new_mobile = ["baru", "terbaru", "new"]
 request_dota = ["cuy/dotalive", "cuy/dota-live", "cuy/dota-stream"]
 request_mobilelegends = ["cuy/ml", "cuy/mlredeem"]
 request_tiktok = ["cuy/tt", "cuy/tiktok"]
+request_wallpaper = ["cuy/wp", "cuy/wallpaper"]
 
 data_covid_from = 'https://data.covid19.go.id'
 today = datetime.today().strftime('%YY-%MM-%DD')
