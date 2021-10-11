@@ -20,10 +20,7 @@ def reputation_value(id):
         return val.value
     else:
         return '0'
-def reputation_update(id, option):
+def reputation_update(id, point):
     cell = reputation_find(id)
     value = reputation_value(id)
-    if option == 'add':
-        reputation.update_cell(cell.row, 2, str(int(value) + 1))
-    elif option == 'reduce':
-        reputation.update_cell(cell.row, 2, str(int(value) - 1))
+    reputation.update_cell(cell.row, 2, str(int(value) + point))
