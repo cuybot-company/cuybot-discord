@@ -22,6 +22,7 @@ class Bot_Help(object):
           {"name": "Cari lirik lagu:", "value":"lirik, lyric, lyrics", "inline":True},
           {"name": "Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
           {"name": "Reputation", "value":"rep help", "inline":True},
+          {"name": "Wallpapers", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True}
         ]
       }
       embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
