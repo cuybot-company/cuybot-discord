@@ -15,6 +15,7 @@ from response.predict_age import Predict_Age
 from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
+from response.tiktok import Tiktok
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -46,8 +47,9 @@ async def on_message(message):
     _mobilelegends = Mobile_Legends(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
     _reputation = Reputation(sender, user_message, bot_say)
+    _tiktok = Tiktok(user_message, bot_send)
     
-
+    
     await _botHelp.info()
     await _botStatus.check()
     await _botWelcome.message()
@@ -61,5 +63,7 @@ async def on_message(message):
     await _mobilelegends.redeem()
     await _userRequest.save()
     await _reputation.check()
+    await _tiktok.find()
 
-c.client.run(os.getenv('TOKEN'))
+# c.client.run(os.getenv('TOKEN'))
+c.client.run('ODk2NDQxMzc4ODY1ODI3ODgx.YWHKFw.fdxw4KEOVZNXocktM5sDY3_Algw')

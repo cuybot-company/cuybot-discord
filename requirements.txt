@@ -72,7 +72,6 @@ Werkzeug==2.0.2
 yarl==1.7.0
 zipp==1.0.0
 zope.interface==4.7.1
-beautifulsoup4==4.10.0
 aiohttp==3.7.4.post0; python_version >= "3.6" and python_full_version >= "3.5.3" \
     --hash=sha256:3cf75f7cdc2397ed4442594b935a11ed5569961333d49b7539ea741be2cc79d5 \
     --hash=sha256:4b302b45040890cea949ad092479e01ba25911a15e648429c7c5aae9650c67a8 \

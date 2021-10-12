@@ -16,6 +16,7 @@ class Bot_Help(object):
           {"name": "Berita", "value":"berita", "inline":True},
           {"name": "Quotes untuk memotivasi diri", "value":"quotes, quote, kutipan", "inline":True},
           {"name": "Info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
+          {"name": "Informasi Akun TikTok", "value": "tt nama-akun, tiktok nama-akun"},
           {"name": "Tebak usia", "value":"usia *nama*", "inline":True},
           {"name": "Informasi spesifikasi smartphone", "value":"hp *merk_hp*, handphone, mobile, phone", "inline":True},
           {"name": "Informasi daftar smartphone terbaru", "value":"hp baru, handphone baru, mobile baru, phone baru", "inline":True},
