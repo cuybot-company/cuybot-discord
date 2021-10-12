@@ -23,6 +23,7 @@ from response.wallpaper import wallpaper
 from response.word import Dictionary
 
 locale.setlocale(locale.LC_ALL, '')
+from config.liveserver import liveserver
 
 @c.client.event
 async def on_ready():
@@ -80,4 +81,5 @@ async def on_message(message):
     await _wallpaper.fetch()
     await _dictionary.Dictionary_word()
 
+liveserver()
 c.client.run(os.getenv('TOKEN'))
