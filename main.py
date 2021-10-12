@@ -80,4 +80,4 @@ async def on_message(message):
     await _wallpaper.fetch()
     await _dictionary.Dictionary_word()
 
-c.client.run('ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.YQyAO8Fx6oTyLBc176VeZaEpRf8')
+c.client.run(os.getenv('TOKEN'))
