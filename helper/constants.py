@@ -1,4 +1,4 @@
-import discord, os
+import discord
 from datetime import datetime
 
 request_stat = ["cuy/status", "cuy/stat", "cuy/stats", "cuy/test", "cuy/ping"]
