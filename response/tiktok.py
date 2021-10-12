@@ -31,6 +31,7 @@ class Tiktok(object):
                 link = resp["url"]
                 thumb = resp["profileImage"]
                 verified = 'Sudah' if resp["verified"] == True else 'Belum'
+                bio = "(Akun belum memasukan bio)" if resp["bio"] == "" else resp["bio"]
 
                 arr = {
                     "thumbnail":
@@ -42,7 +43,7 @@ class Tiktok(object):
                     },
                     "field": [{
                         "name": "Bio",
-                        "value": resp["bio"],
+                        "value": bio,
                         "inline": True
                     }, {
                         "name": "Following",
