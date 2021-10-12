@@ -25,7 +25,7 @@ class Tiktok(object):
                 link = resp["url"]
                 thumb = resp["profileImage"]
                 verified = 'Sudah' if resp["verified"] == True else 'Belum'
-
+                
                 arr = {
                     "thumbnail": thumb,
                     "author": {"name": username, "url": link, "icon": thumb},
