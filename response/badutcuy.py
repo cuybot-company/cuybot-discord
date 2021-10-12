@@ -39,8 +39,9 @@ class BadutStart:
                 #game lagi jalan tapi ada user yang pengen ikutan
                 await ctx.bot_send("bentar tunggu game selesai dulu cuy! kalem atuh ih...")
                 
-    async def atk(ctx, pos: int):
+    async def atk(ctx):
         if ctx.user_message.startswith('cuy/badut atk'):    
+            pos = int(ctx.user_message.split(' ')[2])
             global count
             global end
             global canvas
@@ -61,7 +62,7 @@ class BadutStart:
                         for x in range(len(canvas)):
                             if x == 2 or x == 5 or x == 8:
                                 line += " " + canvas[x]
-                                await ctx.bot_send(line)
+                                await ctx.bot_say(line)
                                 line = ""
                             else:
                                 line +=" " + canvas[x]      

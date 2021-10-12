@@ -66,4 +66,4 @@ async def on_message(message):
     await _badutStart.begin()
     await _badutStart.atk()
 
-c.client.run('ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.ZiTrhmaL4YnDQXEtmQEHHYhxGZk')
+c.client.run(os.getenv('TOKEN'))
