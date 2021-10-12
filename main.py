@@ -15,6 +15,7 @@ from response.predict_age import Predict_Age
 from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
+from response.username import Username
 from response.tiktok import Tiktok
 from response.server import Server
 from response.wallpaper import wallpaper
@@ -49,6 +50,7 @@ async def on_message(message):
     _mobilelegends = Mobile_Legends(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
     _reputation = Reputation(sender, user_message, bot_say)
+    _username = Username(user_message, bot_send)
     _tiktok = Tiktok(user_message, bot_send)
     _server = Server(sender, c.client, user_message, bot_send)
     _wallpaper = wallpaper(user_message, bot_send)
@@ -65,6 +67,7 @@ async def on_message(message):
     await _mobilelegends.redeem()
     await _userRequest.save()
     await _reputation.check()
+    await _username.check()
     await _tiktok.find()
     await _server.control()
     await _wallpaper.fetch()
