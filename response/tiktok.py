@@ -24,7 +24,8 @@ class Tiktok(object):
                 username = resp["username"]
                 link = resp["url"]
                 thumb = resp["profileImage"]
-
+                verified = 'Sudah' if resp["verified"] == True else 'Belum'
+                
                 arr = {
                     "thumbnail": thumb,
                     "author": {"name": username, "url": link, "icon": thumb},
@@ -35,7 +36,7 @@ class Tiktok(object):
                         {"name": "Fans", "value": resp["fans"], "inline": True},
                         {"name": "Hearts", "value": resp["hearts"], "inline": True},
                         {"name": "Videos", "value": resp["videos"], "inline": True},
-                        {"name": "Verified", "value": f"Akun {'Sudah' if resp["verified"] == True else 'Belum' } Verified", "inline": True}
+                        {"name": "Verified", "value": f"Akun {verified} Verified", "inline": True}
                         
                     ]
                 }
