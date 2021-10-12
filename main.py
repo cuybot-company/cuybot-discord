@@ -19,6 +19,7 @@ from response.username import Username
 from response.tiktok import Tiktok
 from response.server import Server
 from response.wallpaper import wallpaper
+from response.word import Dictionary
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -54,6 +55,8 @@ async def on_message(message):
     _tiktok = Tiktok(user_message, bot_send)
     _server = Server(sender, c.client, user_message, bot_send)
     _wallpaper = wallpaper(user_message, bot_send)
+    _dictionary = Dictionary(user_message, bot_send)
+
     await _botHelp.info()
     await _botStatus.check()
     await _botWelcome.message()
@@ -71,5 +74,6 @@ async def on_message(message):
     await _tiktok.find()
     await _server.control()
     await _wallpaper.fetch()
+    await _dictionary.Dictionary_word()
 
 c.client.run(os.getenv('TOKEN'))
