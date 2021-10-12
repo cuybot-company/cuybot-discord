@@ -1,6 +1,6 @@
 from discord.ext import commands
 import random
-
+import os
 
 client = commands.Bot(command_prefix='cuy/badutcuy ')
 
@@ -96,4 +96,4 @@ async def atkError(ctx, err):
     elif isinstance(err, commands.BadArgument):
         await ctx.send("[BAD ARGS] sorry, gagak atk. error, ulangi lagi. ketik cuy/badutcuy start")
         
-client.run('ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.y5EuD1C5TMfR8U15ksKZtiGozqU')
+client.run(os.getenv('TOKEN'))
