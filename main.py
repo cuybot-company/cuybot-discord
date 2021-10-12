@@ -65,5 +65,4 @@ async def on_message(message):
     await _reputation.check()
     await _tiktok.find()
 
-# c.client.run(os.getenv('TOKEN'))
-c.client.run('ODk2NDQxMzc4ODY1ODI3ODgx.YWHKFw.fdxw4KEOVZNXocktM5sDY3_Algw')
+c.client.run(os.getenv('TOKEN'))
