@@ -1,4 +1,3 @@
-import helper.constants as c
 import helper.discord as d
 
 class Bot_Help(object):
@@ -15,7 +14,6 @@ class Bot_Help(object):
           {"name": "Menyapa bot", "value":"helo, hi, hai, hello", "inline":True},
           {"name": "Data covid hari ini", "value":"covid", "inline":True},
           {"name": "Berita", "value":"berita", "inline":True},
-          {"name": "Informasi Akun TikTok", "value":"tt, tiktok", "inline":True},
           {"name": "Quotes untuk memotivasi diri", "value":"quotes, quote, kutipan", "inline":True},
           {"name": "Info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
           {"name": "Tebak usia", "value":"usia *nama*", "inline":True},

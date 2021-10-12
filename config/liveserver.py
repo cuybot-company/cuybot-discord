@@ -1,5 +1,5 @@
 import random, string
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 
 app = Flask(  # Create a flask app
 	__name__,
