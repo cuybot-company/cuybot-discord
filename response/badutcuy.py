@@ -1,8 +1,6 @@
 import random
 
 canvas = []
-
-num = random.randint(0, 9)
 end = True
 
 class BadutStart:
@@ -11,9 +9,10 @@ class BadutStart:
         ctx.user_message = user_message
         ctx.bot_say = bot_say
         ctx.bot_send = bot_send
-
     async def begin(ctx):
         if ctx.user_message.startswith('cuy/badut start'):
+            global num
+            num = random.randint(0, 9)            
             global count
             global end
 
@@ -45,6 +44,7 @@ class BadutStart:
             global count
             global end
             global canvas
+
             if not end:
                 mark = ""
                 if ctx.sender:
@@ -67,7 +67,7 @@ class BadutStart:
                             else:
                                 line +=" " + canvas[x]      
                         
-                        winnerCondition(pos, num)       
+                        winnerCondition(pos)    
                         if end == True:
                             await ctx.bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:clap: SELAMAT :clap:\nlu menang cuy!\nDan lu berhasil dapetin GIVEAWAY berupa....\n..\n..\n**BUG**\nHOREEE!!!!:wave:\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?")
                         elif count >= 9:
@@ -80,7 +80,8 @@ class BadutStart:
                 else:
                     await ctx.bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start` start")
 
-def winnerCondition(pos, num):
+def winnerCondition(pos):
     global end
+    global num
     if pos == num:
         end = True
