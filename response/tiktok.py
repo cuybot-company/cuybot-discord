@@ -31,7 +31,7 @@ class Tiktok(object):
                 link = resp["url"]
                 thumb = resp["profileImage"]
                 verified = 'Sudah' if resp["verified"] == True else 'Belum'
-                bio = "(Akun belum memasukan bio)" if resp["bio"] == "" else resp["bio"]
+                bio = f"(Akun {username} belum memasukan bio)" if resp["bio"] == "" else resp["bio"]
 
                 arr = {
                     "thumbnail":
