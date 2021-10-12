@@ -34,7 +34,7 @@ class BadutStart:
                         line = ""
                     else:
                         line += " " + canvas[x]
-                await ctx.bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/badutcuy atk [angka 1 - 9]`")    
+                await ctx.bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/badut atk [angka 1 - 9]`")    
             else:
                 #game lagi jalan tapi ada user yang pengen ikutan
                 await ctx.bot_send("bentar tunggu game selesai dulu cuy! kalem atuh ih...")
@@ -69,7 +69,7 @@ class BadutStart:
                         
                         winnerCondition(pos, num)       
                         if end == True:
-                            await ctx.bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:clap: SELAMAT :clap:\nlu menang cuy!\nDan lu berhasil dapetin GIVEAWAY berupa....\n..\n..\n**BUG**\nHOREEE!!!!:wave:\n\nmain lagi yu? ketik `cuy/badutcuy start` sekarang! berani?")
+                            await ctx.bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:clap: SELAMAT :clap:\nlu menang cuy!\nDan lu berhasil dapetin GIVEAWAY berupa....\n..\n..\n**BUG**\nHOREEE!!!!:wave:\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?")
                         elif count >= 9:
                             end = True
                             await ctx.bot_say("Game selesai GAK ADA YANG MENANG!!! AH elah :mad:")
@@ -78,7 +78,7 @@ class BadutStart:
                     else:
                         await ctx.bot_send("Maaf jurus itu mungkin udah di pake atau gak available cuy.")
                 else:
-                    await ctx.bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badutcuy start` start")
+                    await ctx.bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start` start")
 
 def winnerCondition(pos, num):
     global end
