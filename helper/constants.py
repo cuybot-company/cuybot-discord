@@ -9,6 +9,9 @@ request_mobile = ["cuy/mobile", "cuy/hp", "cuy/handphone", "cuy/phone"]
 request_new_mobile = ["baru", "terbaru", "new"]
 request_dota = ["cuy/dotalive", "cuy/dota-live", "cuy/dota-stream"]
 request_mobilelegends = ["cuy/ml", "cuy/mlredeem"]
+request_tiktok = ["cuy/tt", "cuy/tiktok"]
+request_update = ["up", "update"]
+request_disconnect = ["dc", "disconnect"]
 
 data_covid_from = 'https://data.covid19.go.id'
 today = datetime.today().strftime('%YY-%MM-%DD')
