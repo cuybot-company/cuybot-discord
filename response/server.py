@@ -14,10 +14,9 @@ class Server(object):
         if self.user_message.startswith('cuy/server'):
             data = self.user_message.split(" ", 1)
             title = "Server Info"   
-
-            if self.id_user in os.getenv('ID_ADMIN'):
             # if not self.id_user in id_admin:
-                print(self.id_user)
+            
+            if not self.id_user in os.getenv('ID_ADMIN'):
                 embed = d.embeed(title, ":warning: Anda tidak berhak memakai fitur ini, hanya boleh para admin saja :warning:")
                 return await self.bot_send(embed=embed)
 
@@ -35,6 +34,5 @@ class Server(object):
                 await self.bot_send(embed=embed)
                 exit()
                 
-
             embed = d.embeed(title, "Untuk update server ketik `cuy/server up` \n untuk mematikan server ketik `cuy/server dc`")
             await self.bot_send(embed=embed)
