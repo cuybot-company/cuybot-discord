@@ -24,6 +24,7 @@ class Bot_Help(object):
           {"name": "Cari lirik lagu:", "value":"lirik, lyric, lyrics", "inline":True},
           {"name": "Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
           {"name": "Reputation", "value":"rep help", "inline":True},
+          {"name": "Game (Badut CUY)", "value":"`badut start`, `badut atk spasi [angka 1 - 9]`", "inline":True},
           {"name": "Random username", "value":"username", "inline":True},
           {"name": "Wallpapers", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
           {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True}
