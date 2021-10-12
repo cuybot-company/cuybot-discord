@@ -65,5 +65,4 @@ async def on_message(message):
     await _wallpaper.fetch()
 
 
-# c.client.run(os.getenv('TOKEN'))
-c.client.run("ODUxNTAxMTU2NTMwMzg4OTkz.YL5MPw.DrDDIlYWxIIgvJ7OKcUp8Qiu8tw")
+c.client.run(os.getenv('TOKEN'))
