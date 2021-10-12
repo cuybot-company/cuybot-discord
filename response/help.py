@@ -10,7 +10,7 @@ class Bot_Help(object):
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
           {"name": "Ping bot status:", "value": "status, stat, stats, test, ping", "inline": True},
-          {"name": "Server Control", "value": "server up (update)", "server update", "server dc (disconnect)", "server disconnect", "inline":True},
+          {"name": "Server Control", "value": "`server up (update)`, `server update` `server dc (disconnect)` `server disconnect`", "inline":True},
           {"name": "Pesan selamat datang:", "value":"help, bantuan, command", "inline":True},
           {"name": "Menyapa bot", "value":"helo, hi, hai, hello", "inline":True},
           {"name": "Data covid hari ini", "value":"covid", "inline":True},
