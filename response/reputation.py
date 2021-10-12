@@ -1,6 +1,7 @@
 import discord
 import helper.constants as c
 import api.data_user_request as api
+import re
 
 class Reputation:
   def __init__(self, sender, user_message, bot_say):
@@ -10,21 +11,24 @@ class Reputation:
   async def check(self):
     if self.user_message.startswith('cuy/rep') :
         args = self.user_message[7:].strip().split(' ')
+        id_pattern = re.compile("^<@!?\d+>")
         try :
             mention_self = str(self.sender.id) in args[0]
             if args[0] == 'help':
                 embed=discord.Embed(title="Reputation", description="List of argument needed for Reputation", color=0x50d396)
-                embed.add_field(name="Check user reputation", value="check @mention                      ", inline=True)
+                embed.add_field(name="Check user reputation", value="@mention", inline=True)
                 embed.add_field(name="Add/decrease user reputation", value="@mention *point*", inline=True)
                 await self.bot_say(embed=embed)
-            elif args[0] == 'check':
-                await self.bot_say(f'{args[1]} ada {api.reputation_value(args[1])} point')
+            elif bool(id_pattern.match(args[0])) and len(args) < 2:
+                args[0] = args[0].replace('!', '')
+                await self.bot_say(f'{args[0]} ada {api.reputation_value(args[0])} point')
             elif isinstance(int(args[1]), int):
                 if mention_self:
                     await self.bot_say('Not allowed')
                 elif int(args[1]) > 10 or int(args[1]) < -10:
                     await self.bot_say('Point not allowed')
                 else :
+                    args[0] = args[0].replace('!', '')
                     if args[1].startswith('+'):
                         args[1] = args[1][1:]
                     cell = api.reputation_find(args[0])
