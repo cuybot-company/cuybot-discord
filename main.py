@@ -16,6 +16,7 @@ from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
 from response.tiktok import Tiktok
+from response.server import Server
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -48,7 +49,7 @@ async def on_message(message):
     _userRequest = User_Request(sender, user_message, bot_send)
     _reputation = Reputation(sender, user_message, bot_say)
     _tiktok = Tiktok(user_message, bot_send)
-    
+    _server = Server(sender, c.client, user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -64,5 +65,6 @@ async def on_message(message):
     await _userRequest.save()
     await _reputation.check()
     await _tiktok.find()
+    await _server.control()
 
 c.client.run(os.getenv('TOKEN'))
