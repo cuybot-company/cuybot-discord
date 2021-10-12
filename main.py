@@ -16,7 +16,10 @@ from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
 from response.badutcuy import BadutStart
-
+from response.username import Username
+from response.tiktok import Tiktok
+from response.server import Server
+from response.wallpaper import wallpaper
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -48,8 +51,15 @@ async def on_message(message):
     _mobilelegends = Mobile_Legends(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
     _reputation = Reputation(sender, user_message, bot_say)
+<<<<<<< HEAD
     _badutStart = BadutStart(sender, user_message, bot_say, bot_send)
 
+=======
+    _username = Username(user_message, bot_send)
+    _tiktok = Tiktok(user_message, bot_send)
+    _server = Server(sender, c.client, user_message, bot_send)
+    _wallpaper = wallpaper(user_message, bot_send)
+>>>>>>> dev
     await _botHelp.info()
     await _botStatus.check()
     await _botWelcome.message()
@@ -63,7 +73,14 @@ async def on_message(message):
     await _mobilelegends.redeem()
     await _userRequest.save()
     await _reputation.check()
+<<<<<<< HEAD
     await _badutStart.begin()
     await _badutStart.atk()
+=======
+    await _username.check()
+    await _tiktok.find()
+    await _server.control()
+    await _wallpaper.fetch()
+>>>>>>> dev
 
 c.client.run(os.getenv('TOKEN'))
