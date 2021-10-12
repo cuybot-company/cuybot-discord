@@ -52,3 +52,4 @@ class Dictionary(object):
         await self.bot_send('kata : '+data_word+'\nPelafalan : -' + data_phonetic + data_meaning)
       else:
         await self.bot_send('kata : '+data_word+'\nPelafalan : ' + data_phonetic + '\nAsal Muasal : ' + data_origin + data_meaning)
+"$TOKEN"
