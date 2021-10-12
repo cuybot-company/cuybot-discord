@@ -16,7 +16,7 @@ from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
 
-#singular
+#seperate-client (onprogress)
 import response.badutcuy as badutcuy
 
 locale.setlocale(locale.LC_ALL, '')
@@ -64,7 +64,7 @@ async def on_message(message):
     await _userRequest.save()
     await _reputation.check()
     
-    #games
+    #seperate client
     await badutcuy
 
 c.client.run(os.getenv('TOKEN'))

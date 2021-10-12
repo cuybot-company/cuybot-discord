@@ -8,7 +8,6 @@ canvas = []
 
 num = random.randint(0, 9)
 end = True
-print(str(num))
 
 @client.command()
 async def start(ctx):
