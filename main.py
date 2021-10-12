@@ -15,6 +15,7 @@ from response.predict_age import Predict_Age
 from response.user_request import User_Request
 from response.reputation import Reputation
 from response.mobilelegends import Mobile_Legends
+from response.football import Football
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -46,6 +47,7 @@ async def on_message(message):
     _mobilelegends = Mobile_Legends(user_message, bot_send)
     _userRequest = User_Request(sender, user_message, bot_send)
     _reputation = Reputation(sender, user_message, bot_say)
+    _dataFootball = Football(user_message, bot_send)
     
 
     await _botHelp.info()
@@ -61,5 +63,6 @@ async def on_message(message):
     await _mobilelegends.redeem()
     await _userRequest.save()
     await _reputation.check()
+    await _dataFootball.check()
 
 c.client.run(os.getenv('TOKEN'))
