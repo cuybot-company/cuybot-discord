@@ -14,6 +14,7 @@ request_update = ["up", "update"]
 request_disconnect = ["dc", "disconnect"]
 request_wallpaper = ["cuy/wp", "cuy/wallpaper"]
 request_word = ["cuy/dictionary", "cuy/kamus", "cuy/Kamus", "cuy/Dictionary"]
+request_face = ["cuy/tebak muka", "cuy/tebak wajah"]
 
 data_covid_from = 'https://data.covid19.go.id'
 today = datetime.today().strftime('%YY-%MM-%DD')

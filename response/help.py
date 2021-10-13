@@ -29,6 +29,7 @@ class Bot_Help(object):
           {"name": "Wallpapers", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
           {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True},
           {"name": "Informasi Anime", "value":"anime nama-anime", "inline":True},
+          {"name": "Tebak wajah", "value":"tebak wajah, tebak muka", "inline":True},
         ]
       }
       embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
