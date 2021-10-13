@@ -2,7 +2,6 @@ import helper.constants as c
 import helper.discord as d
 import os
 import subprocess
-import json
 
 class Server(object):
     def __init__(self, sender, server, user_message, bot_send):
@@ -17,7 +16,7 @@ class Server(object):
             title = "Server Info"   
             # if not self.id_user in id_admin:
             
-            if not self.id_user in json.loads(os.getenv('ID_ADMIN')):
+            if not self.id_user in os.getenv('ID_ADMIN'):
                 embed = d.embeed(title, ":warning: Anda tidak berhak memakai fitur ini, hanya boleh para admin saja :warning:")
                 return await self.bot_send(embed=embed)
 
