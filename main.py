@@ -43,7 +43,7 @@ async def on_message(message):
     bot_send = message.reply
     bot_say = message.channel.send
 
-    _botHelp = Bot_Help(sender, c.client, user_message, bot_send)
+    _botHelp = Bot_Help(user_message, bot_send)
     _botStatus = Bot_Status(user_message, bot_send)
     _botWelcome = Bot_Welcome(user_message, bot_send)
     _covid = Covid(user_message, bot_send)
