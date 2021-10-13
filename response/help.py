@@ -1,11 +1,19 @@
 import helper.discord as d
+from discord.ext import commands
+import numpy as np
+import asyncio
 
 class Bot_Help(object):
-  def __init__(self, user_message, bot_send):
+  def __init__(self, sender, client, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send
+    self.client = client
+    self.author = sender
   async def info(self):
     if self.user_message.startswith('cuy/help'):
+      buttons = [u"\u23EA", u"\u25C0", u"\u25B6", u"\u23E9"]
+      current = 0
+
       arr = {
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
@@ -33,5 +41,44 @@ class Bot_Help(object):
           {"name": "Ngopi", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
         ]
       }
+
+      if(len(arr["field"]) > 10):
+        split_field = np.array_split(arr["field"], round(len(arr["field"])/10))
+        arr["field"] = split_field[current]
+
       embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
-      await self.bot_send(embed=embed)
+
+      msg = await self.bot_send(embed=embed)
+
+      for button in buttons:
+        await msg.add_reaction(button)
+
+      while True:
+        try:
+          reaction, user = await self.client.wait_for('reaction_add', check=lambda reaction, user: user == self.author and reaction.emoji in buttons, timeout=60.0)
+        except asyncio.TimeoutError:
+          await msg.clear_reactions()
+        else:
+          prev_page = current
+
+          if reaction.emoji == buttons[0]:
+            current = 0
+
+          elif reaction.emoji == buttons[1]:
+            if current > 0:
+              current -= 1
+
+          elif reaction.emoji == buttons[2]:
+            if current < len(split_field)-1:
+              current += 1
+
+          elif reaction.emoji == buttons[3]:
+            current = len(split_field)-1
+
+          for button in buttons:
+            await msg.remove_reaction(button, self.author)
+          
+          if current != prev_page:
+            arr["field"] = split_field[current]
+            embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
+            await msg.edit(embed=embed)
