@@ -22,6 +22,7 @@ from response.server import Server
 from response.wallpaper import wallpaper
 from response.word import Dictionary
 from response.anime import Anime
+from response.face import Face
 
 locale.setlocale(locale.LC_ALL, '')
 from config.liveserver import liveserver
@@ -61,6 +62,7 @@ async def on_message(message):
     _wallpaper = wallpaper(user_message, bot_send)
     _dictionary = Dictionary(user_message, bot_send)
     _anime = Anime(user_message, bot_send)
+    _face = Face(user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -83,6 +85,7 @@ async def on_message(message):
     await _wallpaper.fetch()
     await _dictionary.Dictionary_word()
     await _anime.info()
+    await _face.guess_the_face()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
