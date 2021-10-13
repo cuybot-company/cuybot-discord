@@ -27,7 +27,8 @@ class Bot_Help(object):
           {"name": "Game (Badut CUY)", "value":"`badut start`, `badut atk spasi [angka 1 - 9]`", "inline":True},
           {"name": "Random username", "value":"username", "inline":True},
           {"name": "Wallpapers", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
-          {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True}
+          {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True},
+          {"name": "Informasi Anime", "value":"anime nama-anime", "inline":True},
         ]
       }
       embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)

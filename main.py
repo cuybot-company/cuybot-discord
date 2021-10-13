@@ -21,6 +21,7 @@ from response.tiktok import Tiktok
 from response.server import Server
 from response.wallpaper import wallpaper
 from response.word import Dictionary
+from response.anime import Anime
 
 locale.setlocale(locale.LC_ALL, '')
 from config.liveserver import liveserver
@@ -59,6 +60,7 @@ async def on_message(message):
     _server = Server(sender, c.client, user_message, bot_send)
     _wallpaper = wallpaper(user_message, bot_send)
     _dictionary = Dictionary(user_message, bot_send)
+    _anime = Anime(user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -80,6 +82,7 @@ async def on_message(message):
     await _server.control()
     await _wallpaper.fetch()
     await _dictionary.Dictionary_word()
+    await _anime.info()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
