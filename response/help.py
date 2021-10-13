@@ -30,6 +30,7 @@ class Bot_Help(object):
           {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True},
           {"name": "Informasi Anime", "value":"anime nama-anime", "inline":True},
           {"name": "Tebak wajah", "value":"tebak wajah, tebak muka", "inline":True},
+          {"name": "Ngopi", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
         ]
       }
       embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)

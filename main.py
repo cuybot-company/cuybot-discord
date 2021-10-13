@@ -23,6 +23,7 @@ from response.wallpaper import wallpaper
 from response.word import Dictionary
 from response.anime import Anime
 from response.face import Face
+from response.random_coffee import Coffee
 
 locale.setlocale(locale.LC_ALL, '')
 from config.liveserver import liveserver
@@ -63,6 +64,7 @@ async def on_message(message):
     _dictionary = Dictionary(user_message, bot_send)
     _anime = Anime(user_message, bot_send)
     _face = Face(user_message, bot_send)
+    _coffee = Coffee(user_message, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -86,6 +88,7 @@ async def on_message(message):
     await _dictionary.Dictionary_word()
     await _anime.info()
     await _face.guess_the_face()
+    await _coffee.findOne()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
