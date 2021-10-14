@@ -26,13 +26,27 @@ class BadutStart:
                 
                 # print canvas
                 line = ""
-                for x in range(len(canvas)):
-                    if x == 2 or x == 5 or x == 8:
-                        line += " " + canvas[x]
-                        await ctx.bot_say(line)
-                        line = ""
-                    else:
-                        line += " " + canvas[x]
+                i = 0
+                while i < 9:
+                  if i == 0:
+                    line = canvas[i]
+                  elif i == 3 or i == 6:
+                    line = line + canvas[i]
+                  elif i == 2 or i == 5 or i == 8:
+                    line = line + '     ' + canvas[i] +'\n\n'
+                  else:
+                    line = line + '     ' + canvas[i]
+                  i += 1
+                  if i == 9:
+                    break
+                await ctx.bot_say(line)
+                # for x in range(len(canvas)):
+                #     if x == 2 or x == 5 or x == 8:
+                #         line += " " + canvas[x]
+                #         await ctx.bot_say(line)
+                #         line = ""
+                #     else:
+                #         line += " " + canvas[x]
                 await ctx.bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/badut atk [angka 1 - 9]`")    
             else:
                 #game lagi jalan tapi ada user yang pengen ikutan
@@ -59,13 +73,27 @@ class BadutStart:
 
                         # print canvas
                         line = ""
-                        for x in range(len(canvas)):
-                            if x == 2 or x == 5 or x == 8:
-                                line += " " + canvas[x]
-                                await ctx.bot_say(line)
-                                line = ""
-                            else:
-                                line +=" " + canvas[x]      
+                        i = 0
+                        while i < 9:
+                          if i == 0:
+                            line = canvas[i]
+                          elif i == 3 or i == 6:
+                            line = line + canvas[i]
+                          elif i == 2 or i == 5 or i == 8:
+                            line = line + '     ' + canvas[i] +'\n\n'
+                          else:
+                            line = line + '     ' + canvas[i]
+                          i += 1
+                          if i == 9:
+                            break
+                        await ctx.bot_say(line)
+                        # for x in range(len(canvas)):
+                        #     if x == 2 or x == 5 or x == 8:
+                        #         line += " " + canvas[x]
+                        #         await ctx.bot_say(line)
+                        #         line = ""
+                        #     else:
+                        #         line +=" " + canvas[x]      
                         
                         winnerCondition(pos)    
                         if end == True:
