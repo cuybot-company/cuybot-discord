@@ -92,4 +92,4 @@ async def on_message(message):
     await _coffee.findOne()
 
 liveserver()
-c.client.run('ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.uX6b8jXB7wfBsYOnGm_KkToMky0')
+c.client.run(os.getenv('TOKEN'))
