@@ -1,0 +1,12 @@
+version: "3"
+services:
+    bot:
+        build:
+            context: .
+            dockerfile: dev.Dockerfile
+        volumes:
+            - ./:/app
+        env_file:
+            - .env
+        ports:
+            - 8000:8000

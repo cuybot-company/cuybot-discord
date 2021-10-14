@@ -1,5 +1,6 @@
 import requests
 import json
+import random
 
 def data_news(param):
     data_param = param.split()[1]
@@ -10,9 +11,12 @@ def data_news(param):
     if news is None :
         return('saat ini kategori berita ' +data_param+' tidak ada\n\nmasukkan kategori berita, contoh: \n`/berita nasional`\n`/berita internasional`\n`/berita ekonomi`\n`/berita olahraga`\n`/berita teknologi`\n`/berita hiburan`')
     else:
-        title = news['posts'][0]['title']
-        link = news['posts'][0]['link']
-        date = news['posts'][0]['pubDate']
-        description = news['posts'][0]['description']
-        return('Berita '+param+' hari ini: \n' + title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n')
+        numbers = list(range(len(news['posts'])))
+        random.shuffle(numbers)
+        x = random.choice(numbers)
+        title = news['posts'][x]['title']
+        link = news['posts'][x]['link']
+        date = news['posts'][x]['pubDate']
+        description = news['posts'][x]['description']
+        return('Berita '+data_param+' hari ini: \n' + title + '\n\n' + link + '\n' + date + '\n' + description + '\n\n')
     

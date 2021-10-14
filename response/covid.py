@@ -1,7 +1,7 @@
 import helper.constants as c
 import api.data_covid as api
 
-class covid(object):
+class Covid(object):
   def __init__(self, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send

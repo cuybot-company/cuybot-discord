@@ -1,9 +1,36 @@
-import helper.constants as c
+import helper.discord as d
 
-class bot_help(object):
+class Bot_Help(object):
   def __init__(self, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send
   async def info(self):
-    if any(help in self.user_message for help in c.request_help):
-      await self.bot_send(':clap: --CUYBOT HELP-- :clap:\ncommand dasar pemanggilan bot: `cuy/(command)` tanpa tada kurung\n\n***command yang tersedia:***\n\n*ping bot status*:\n`/status, /stat, /stats, /test, /ping`\n*pesan selamat datang*:\n`/help, /bantuan, /command`\n*menyapa bot*: `/helo, /hi, /hai, /hello`\n*data covid hari in*: `/covid`\n*berita teknologi hari ini*: `/berita`\n*quotes untuk memotivasi diri*:\n`/quotes, /quote, /kutipan,`\n*Info Akun Tiktok*:\n`/tiktok, /follower, /like, /link, /video`\n*tebak usia (hiburan)*: `/usia [spasi] nama`\n*Informasi Berita Terkini*: `/berita`\n*informasi spesifikasi smartphone*: `/hp [spasi] merk hp, /handphone, /mobile, /phone`\n*Informasi daftar smartphone terbaru*: `/hp baru, /handphone baru, /mobile baru, /phone baru`\n*cari lirik lagu*:\n`/lirik, /lyric, /lyrics`\n*notes*: disarankan menggunakan kombinasi selengkapnya contoh: `/lirik avenged sevenfold dear god`\n\nBOT masih dalam tahap pengembangan lanjutan, untuk info lebih detail liat disini:\n`||xxxxxxxxx||`\n\n:wave::wave::wave:')
+    if self.user_message.startswith('cuy/help'):
+      arr = {
+        "footer": {"text": "Bot masih dalam tahap pengembangan."},
+        "field": [
+          {"name": "Ping bot status:", "value": "status, stat, stats, test, ping", "inline": True},
+          {"name": "Pesan selamat datang:", "value":"help, bantuan, command", "inline":True},
+          {"name": "Menyapa bot", "value":"helo, hi, hai, hello", "inline":True},
+          {"name": "Data covid hari ini", "value":"covid", "inline":True},
+          {"name": "Berita", "value":"berita", "inline":True},
+          {"name": "Quotes untuk memotivasi diri", "value":"quotes, quote, kutipan", "inline":True},
+          {"name": "Info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
+          {"name": "Informasi Akun TikTok", "value": "tt nama-akun, tiktok nama-akun"},
+          {"name": "Tebak usia", "value":"usia *nama*", "inline":True},
+          {"name": "Informasi spesifikasi smartphone", "value":"hp *merk_hp*, handphone, mobile, phone", "inline":True},
+          {"name": "Informasi daftar smartphone terbaru", "value":"hp baru, handphone baru, mobile baru, phone baru", "inline":True},
+          {"name": "Cari lirik lagu:", "value":"lirik, lyric, lyrics", "inline":True},
+          {"name": "Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
+          {"name": "Reputation", "value":"rep help", "inline":True},
+          {"name": "Game (Badut CUY)", "value":"`badut start`, `badut atk spasi [angka 1 - 9]`", "inline":True},
+          {"name": "Random username", "value":"username", "inline":True},
+          {"name": "Wallpapers", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
+          {"name": "Dictionary", "value":"Dictionary, Kamus", "inline":True},
+          {"name": "Informasi Anime", "value":"anime nama-anime", "inline":True},
+          {"name": "Tebak wajah", "value":"tebak wajah, tebak muka", "inline":True},
+          {"name": "Ngopi", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
+        ]
+      }
+      embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot: `cuy/(command)`", 0x50d396, arr)
+      await self.bot_send(embed=embed)
