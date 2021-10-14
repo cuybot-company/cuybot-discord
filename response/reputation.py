@@ -1,5 +1,4 @@
 import discord
-import helper.constants as c
 import api.data_user_request as api
 import re
 
@@ -21,7 +20,7 @@ class Reputation:
                 await self.bot_say(embed=embed)
             elif bool(id_pattern.match(args[0])) and len(args) < 2:
                 args[0] = args[0].replace('!', '')
-                await self.bot_say(f':tada: reputasi {args[0]} saat ini: :tada:\n`{api.reputation_value(args[0])}** point`\n\n *tips: lempar reputasi ke member yang dirasa membantu komunitas ini menjadi lebih berkembang lagi.*\ngunakan `cuy/rep help` untuk penggunaan command reputasi.')
+                await self.bot_say(f':tada: reputasi {args[0]} saat ini: :tada:\n`{api.reputation_value(args[0])} point`\n\n *tips: lempar reputasi ke member yang dirasa membantu komunitas ini menjadi lebih berkembang lagi.*\ngunakan `cuy/rep help` untuk penggunaan command reputasi.')
             elif isinstance(int(args[1]), int):
                 if mention_self:
                     await self.bot_say('Sorry cuy gak bisa ngasih point ke diri sendiri ya!')

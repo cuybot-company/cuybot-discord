@@ -81,6 +81,7 @@ async def on_message(message):
     await _reputation.check()
     await _badutStart.begin()
     await _badutStart.atk()
+    await _badutStart.stop()
     await _username.check()
     await _tiktok.find()
     await _server.control()
@@ -91,4 +92,4 @@ async def on_message(message):
     await _coffee.findOne()
 
 liveserver()
-c.client.run(os.getenv('TOKEN'))
+c.client.run('ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.uX6b8jXB7wfBsYOnGm_KkToMky0')
