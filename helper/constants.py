@@ -13,7 +13,7 @@ request_tiktok = ["cuy/tt", "cuy/tiktok"]
 request_update = ["up", "update"]
 request_disconnect = ["dc", "disconnect"]
 request_wallpaper = ["cuy/wp", "cuy/wallpaper"]
-request_word = ["cuy/dictionary", "cuy/kamus", "cuy/Kamus", "cuy/Dictionary"]
+request_word = ["cuy/dictionary", "cuy/kamus", "cuy/Kamus", "cuy/Dictionary", "cuy/dict"]
 request_face = ["cuy/tebak muka", "cuy/tebak wajah"]
 request_coffee = ["cuy/coffee", "cuy/coffee hari ini", "cuy/ngopi", "cuy/ngopi dulu"]
 
