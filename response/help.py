@@ -10,7 +10,6 @@ class Bot_Help(object):
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
           {"name": "Ping bot status:", "value": "status, stat, stats, test, ping", "inline": True},
-          {"name": "Server Control", "value": "`server up (update)`, `server update` `server dc (disconnect)` `server disconnect`", "inline":True},
           {"name": "Pesan selamat datang:", "value":"help, bantuan, command", "inline":True},
           {"name": "Menyapa bot", "value":"helo, hi, hai, hello", "inline":True},
           {"name": "Data covid hari ini", "value":"covid", "inline":True},
@@ -33,5 +32,5 @@ class Bot_Help(object):
           {"name": "Ngopi", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
         ]
       }
-      embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
+      embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot: `cuy/(command)`", 0x50d396, arr)
       await self.bot_send(embed=embed)
