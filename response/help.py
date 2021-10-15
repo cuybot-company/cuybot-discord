@@ -8,8 +8,10 @@ class Bot_Help(object):
     self.author = sender
   async def info(self):
     if self.user_message.startswith('cuy/help'):
+      
       buttons = [u"\u23EA", u"\u25C0", u"\u25B6", u"\u23E9"]
       current = 0
+
       arr = {
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
