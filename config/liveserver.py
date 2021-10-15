@@ -19,6 +19,13 @@ def home():
 def commands():
 	return render_template("commands.html")
 
+@app.route("/games")
+def games():
+	return render_template("game.html")
+
+@app.route("/tictactoe")
+def tictactoe():
+	return render_template("tictactoe.html")
   
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
