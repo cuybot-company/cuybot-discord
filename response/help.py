@@ -32,5 +32,43 @@ class Bot_Help(object):
           {"name": "Seputar reputasi member **cuyhub community**", "value":"rep help, rep @mention [angka], rep @mention", "inline":True},
         ]
       }
-      embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot: `cuy/(command)`", 0x50d396, arr)
-      await self.bot_send(embed=embed)
+
+      split_field = [arr["field"][i:i + 10] for i in range(0, len(arr["field"]), 10)]
+      arr["field"] = split_field[current]
+
+      embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
+
+      msg = await self.bot_send(embed=embed)
+
+      for button in buttons:
+        await msg.add_reaction(button)
+
+      while True:
+        try:
+          reaction, user = await self.client.wait_for('reaction_add', check=lambda reaction, user: user == self.author and reaction.emoji in buttons, timeout=60.0)
+        except:
+          await msg.clear_reactions()
+        else:
+          prev_page = current
+
+          if reaction.emoji == buttons[0]:
+            current = 0
+
+          elif reaction.emoji == buttons[1]:
+            if current > 0:
+              current -= 1
+
+          elif reaction.emoji == buttons[2]:
+            if current < len(split_field)-1:
+              current += 1
+
+          elif reaction.emoji == buttons[3]:
+            current = len(split_field)-1
+
+          for button in buttons:
+            await msg.remove_reaction(button, self.author)
+          
+          if current != prev_page:
+            arr["field"] = split_field[current]
+            embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
+            await msg.edit(embed=embed)
