@@ -5,7 +5,7 @@ import helper.constants as c
 locale.setlocale(locale.LC_ALL, '')
 from config.liveserver import liveserver
 liveserver()
-# c.client.run(os.getenv('TOKEN'))
+
 
 plugins = next(os.walk("./response"), (None, None, []))[2] 
 
@@ -13,4 +13,4 @@ for plugin in plugins:
     c.client.load_extension(f'response.{plugin[:-3]}')
     print(f'{plugin} has been loaded')
 
-c.client.run("ODk2MzA1NDc1OTEyNjE4MDA0.YWFLhg.uR31T6Oi9HH7IEV5rDJRq9CSexU")
+c.client.run(os.getenv('TOKEN'))
