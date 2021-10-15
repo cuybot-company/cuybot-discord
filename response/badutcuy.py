@@ -2,8 +2,6 @@ import random
 import api.data_user_request as api
 from discord_components import DiscordComponents, Button, ButtonStyle
 
-# discord-components
-
 #initial game badut
 end = True
 turn = 0
