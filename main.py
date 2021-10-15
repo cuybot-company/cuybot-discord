@@ -81,6 +81,7 @@ async def on_message(message):
     await _reputation.check()
     await _badutStart.begin()
     await _badutStart.atk()
+    await _badutStart.stop()
     await _username.check()
     await _tiktok.find()
     await _server.control()
