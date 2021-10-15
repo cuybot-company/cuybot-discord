@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from datetime import datetime
 
 request_stat = ["cuy/status", "cuy/stat", "cuy/stats", "cuy/test", "cuy/ping"]
@@ -19,4 +20,6 @@ request_coffee = ["cuy/coffee", "cuy/coffee hari ini", "cuy/ngopi", "cuy/ngopi d
 
 data_covid_from = 'https://data.covid19.go.id'
 today = datetime.today().strftime('%YY-%MM-%DD')
-client = discord.Client()
+client = commands.Bot(command_prefix="cuy/", help_command=None)
+cmd = commands
+cog = commands.Cog
