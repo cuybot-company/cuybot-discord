@@ -80,7 +80,6 @@ async def on_message(message):
     await _userRequest.save()
     await _reputation.check()
     await _badutStart.begin()
-    await _badutKwStart.begin()
     await _username.check()
     await _tiktok.find()
     await _server.control()

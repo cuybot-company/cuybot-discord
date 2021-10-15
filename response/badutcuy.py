@@ -12,7 +12,7 @@ component = []
 badut = 0
 ketemu = True
 
-class BadutKwStart:
+class BadutStart:
     def __init__(ctx, sender, client, user_message, bot_say, bot_send):
         ctx.sender = sender
         ctx.user_message = user_message
