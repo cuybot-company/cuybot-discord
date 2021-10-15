@@ -1,11 +1,15 @@
 import helper.discord as d
 
 class Bot_Help(object):
-  def __init__(self, user_message, bot_send):
+  def __init__(self, sender, client, user_message, bot_send):
     self.user_message = user_message
     self.bot_send = bot_send
+    self.client = client
+    self.author = sender
   async def info(self):
     if self.user_message.startswith('cuy/help'):
+      buttons = [u"\u23EA", u"\u25C0", u"\u25B6", u"\u23E9"]
+      current = 0
       arr = {
         "footer": {"text": "Bot masih dalam tahap pengembangan."},
         "field": [
