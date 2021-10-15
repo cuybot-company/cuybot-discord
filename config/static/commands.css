@@ -24,8 +24,9 @@
 }
 table{
     position: absolute;
-    margin-top: 150px;
+    margin-top: 230px;
     margin-left: 50%;
+    margin-bottom: 50px;
     top: 50%;
     transform: translate(-50%,-50%);
     width: 60%; 
