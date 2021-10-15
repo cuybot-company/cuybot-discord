@@ -92,9 +92,9 @@ class BadutStart:
                         if end == True:
                             addPoint(ctx.sender.id)
                             await ctx.bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/. start` sekarang! berani?")
-                        elif count >= 3:
+                        elif count >= 4:
                             end = True
-                            await ctx.bot_say(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 3x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
+                            await ctx.bot_say(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
                         else:
                             await ctx.bot_say(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?")
                     else:
