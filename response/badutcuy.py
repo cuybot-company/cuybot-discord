@@ -21,7 +21,7 @@ class BadutStart(c.cog):
         user_message = ctx.message.content
         bot_say = ctx.message.channel.send
         bot_send = ctx.message.reply
-        if user_message.startswith('cuy/. start'):
+        if 'start' in user_message:
             global end
             global turn
             global message
@@ -88,7 +88,7 @@ class BadutStart(c.cog):
             else:
                 await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
 
-        elif user_message.startswith('cuy/. stop'):
+        elif 'stop' in user_message:
             await message.edit(':rage: PAYAH! Permainan **badutcuy dihentikan** :rage:', components=[])
             end = True
 
