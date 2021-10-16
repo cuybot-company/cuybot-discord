@@ -14,3 +14,53 @@ def get_cuaca(kota):
     else:
         return("Maaf kotamu tidak terdaftar disini")
 
+"""
+Json data :
+{
+    "coord":
+        {
+            "lon":110.5184,
+            "lat":-7.4202
+            },
+    "weather":
+        [{
+            "id":803,
+            "main":"Clouds",
+            "description":"broken clouds",
+            "icon":"04n"
+                }],
+    "base":"stations",
+    "main":
+        {
+            "temp":294.73,
+            "feels_like":295.27,
+            "temp_min":285.45,
+            "temp_max":294.73,
+            "pressure":1012,
+            "humidity":89,
+            "sea_level":1012,
+            "grnd_level":928
+                },
+    "visibility":10000,
+    "wind":
+        {
+            "speed":2.15,
+            "deg":213,
+            "gust":3.67
+                },
+    "clouds":{"all":69},
+    "dt":1634397658,
+    "sys":
+        {
+            "type":2,
+            "id":2041584,
+            "country":"ID",
+            "sunrise":1634336119,
+            "sunset":1634380284
+                },
+    "timezone":25200,
+    "id":1629131,
+    "name":"Tengaran",
+    "cod":200
+        }
+"""
