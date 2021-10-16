@@ -1,0 +1,8 @@
+.games {
+    border-radius: 10px;
+    background: #1D1E30;
+    box-shadow: 4px 3px 8px 1px #969696;
+  	-webkit-box-shadow: 4px 3px 8px 1px #969696;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
