@@ -1,128 +1,102 @@
 import random
 import api.data_user_request as api
+from discord_components import DiscordComponents, Button, ButtonStyle
 
-canvas = []
+#initial game badut
 end = True
+turn = 0
+message = ""
+component = []
+badut = 0
+ketemu = True
 
 class BadutStart:
-    def __init__(ctx, sender, user_message, bot_say, bot_send):
+    def __init__(ctx, sender, client, user_message, bot_say, bot_send):
         ctx.sender = sender
         ctx.user_message = user_message
         ctx.bot_say = bot_say
         ctx.bot_send = bot_send
+        ctx.client = client
+
+        DiscordComponents(ctx.client)
+
     async def begin(ctx):
         if ctx.user_message.startswith('cuy/. start'):
-            global num
-            num = random.randint(1, 9)      
-            global count
             global end
+            global turn
+            global message
+            global component
+            global badut
+            global ketemu
 
+            buttons = ['{}'.format(x) for x in range(1,10)]
+            
             if end:
-                global canvas 
-                canvas = [":white_large_square:", ":white_large_square:", ":white_large_square:", 
-                        ":white_large_square:", ":white_large_square:", ":white_large_square:",
-                        ":white_large_square:",":white_large_square:", ":white_large_square:"]
                 end = False
-                count = 0
-                
-                # print canvas
-                line = ""
-                i = 0
-                while i < 9:
-                  if i == 0:
-                    line = canvas[i]
-                  elif i == 3 or i == 6:
-                    line = line + canvas[i]
-                  elif i == 2 or i == 5 or i == 8:
-                    line = line + '     ' + canvas[i] +'\n\n'
-                  else:
-                    line = line + '     ' + canvas[i]
-                  i += 1
-                  if i == 9:
-                    break
-                await ctx.bot_say(line)
-                # for x in range(len(canvas)):
-                #     if x == 2 or x == 5 or x == 8:
-                #         line += " " + canvas[x]
-                #         await ctx.bot_say(line)
-                #         line = ""
-                #     else:
-                #         line += " " + canvas[x]
-                await ctx.bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/. atk [angka 1 - 9]`")    
-            else:
-                #game lagi jalan tapi ada user yang pengen ikutan
-                await ctx.bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
-                
-    async def atk(ctx):
-        if ctx.user_message.startswith('cuy/. a'):    
-            pos = int(ctx.user_message.split(' ')[2])
-            global count
-            global end
-            global canvas
+                ketemu = False
+                turn = 4
+                message = ""
+                badut = random.randint(1, 9)
 
-            if not end:
-                mark = ""
-                if ctx.sender:
-                    if pos == num:
-                        mark = ":clown:"
-                    else:
-                        mark = ":poop:"
-                    
-                    if 0 < pos < 10 and canvas[pos - 1] == ":white_large_square:":
-                        canvas[pos - 1] = mark
-                        count += 1
+                component = [
+                    [Button(label="-", custom_id="1"),Button(label="-", custom_id="2"),Button(label="-", custom_id="3")],
+                    [Button(label="-", custom_id="4"),Button(label="-", custom_id="5"),Button(label="-", custom_id="6")],
+                    [Button(label="-", custom_id="7"),Button(label="-", custom_id="8"),Button(label="-", custom_id="9")]
+                ]
 
-                        # print canvas
-                        line = ""
-                        i = 0
-                        while i < 9:
-                          if i == 0:
-                            line = canvas[i]
-                          elif i == 3 or i == 6:
-                            line = line + canvas[i]
-                          elif i == 2 or i == 5 or i == 8:
-                            line = line + '     ' + canvas[i] +'\n\n'
-                          else:
-                            line = line + '     ' + canvas[i]
-                          i += 1
-                          if i == 9:
-                            break
-                        await ctx.bot_say(line)
-                        winnerCondition(pos)    
-                        if end == True:
-                            addPoint(ctx.sender.id)
-                            await ctx.bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/. start` sekarang! berani?")
-                        elif count >= 4:
+                message = await ctx.bot_say(f":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`pilih salah satu button`",components=component)
+                
+                while True:
+                    if turn == 0 and ketemu == False:
+                        end = True
+                        await message.edit(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start`", components=[])
+                    elif end and ketemu:
+                        await message.edit("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(badut)  + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?", components=[])
+                            
+                    interaction = await ctx.client.wait_for("button_click", check = lambda i: i.custom_id in buttons)
+                    button_select = int(interaction.custom_id)
+
+                    pesan_jalan = f'Anda tinggal {turn-1} jalan lagi' if turn-1 > 0 else "Woops, kesempatan jalan sudah tidak ada lagi"
+                    await interaction.send(pesan_jalan)
+
+                    if button_select == badut:
+                        if button_select >= 1 and button_select <= 3:
+                            component[0][button_select - 1] = Button(style=ButtonStyle.green, emoji=u"\U0001F921", custom_id=interaction.custom_id, disabled=True)
                             end = True
-                            await ctx.bot_say(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
-                        else:
-                            await ctx.bot_say(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?")
+                            ketemu = True
+                            addPoint(interaction.user.id)
+                        elif button_select >= 4 and button_select <= 6:
+                            component[1][button_select - 4] = Button(style=ButtonStyle.green, emoji=u"\U0001F921", custom_id=interaction.custom_id, disabled=True)
+                            end = True
+                            ketemu = True
+                            addPoint(interaction.user.id)
+                        elif button_select >= 7 and button_select <= 9:
+                            component[2][button_select - 7] = Button(style=ButtonStyle.green, emoji=u"\U0001F921", custom_id=interaction.custom_id, disabled=True)
+                            end = True
+                            ketemu = True
+                            addPoint(interaction.user.id)
                     else:
-                        await ctx.bot_send("Sorry cuy mungkin atk itu udah di pake atau gak available")
-                else:
-                    await ctx.bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
-    async def stop(ctx):
-      if ctx.user_message.startswith('cuy/. stop'):    
-        global end
-        global canvas
-        global count
-        print('stop the game')
-        await ctx.bot_say(':rage: PAYAH! Permainan **badutcuy dihentikan** :rage:')
-        end = True
-        canvas = []
-        count = 0
+                        if button_select >= 1 and button_select <= 3:
+                            component[0][button_select - 1] = Button(style=ButtonStyle.red, emoji=u"\U0001F4A9", custom_id=interaction.custom_id, disabled=True)
+                        elif button_select >= 4 and button_select <= 6:
+                            component[1][button_select - 4] = Button(style=ButtonStyle.red, emoji=u"\U0001F4A9", custom_id=interaction.custom_id, disabled=True)
+                        elif button_select >= 7 and button_select <= 9:
+                            component[2][button_select - 7] = Button(style=ButtonStyle.red, emoji=u"\U0001F4A9", custom_id=interaction.custom_id, disabled=True)
+
+                    turn -= 1
+                    await message.edit(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?", components=component)
+            else:
+                await ctx.bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
+
+        elif ctx.user_message.startswith('cuy/. stop'):
+            await message.edit(':rage: PAYAH! Permainan **badutcuy dihentikan** :rage:', components=[])
+            end = True
 
 def addPoint(person):
-  print('id => ', person)
-  win = str(person)
-  winner = f'<@{win}>'
-  cell = api.reputation_find(winner)
-  if cell == None:
-    api.reputation_insert(winner)
-  api.reputation_update(winner, 1)      
-      
-def winnerCondition(pos):
-    global end
-    global num
-    if pos == num:
-        end = True
+    print('id => ', person)
+    win = str(person)
+    winner = f'<@{win}>'
+    cell = api.reputation_find(winner)
+    if cell == None:
+        api.reputation_insert(winner)
+    api.reputation_update(winner, 1)
