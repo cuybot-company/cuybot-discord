@@ -24,7 +24,7 @@ class Bot_Help(object):
           {"name": "Cari info akun tiktok", "value": "tt nama-akun, tiktok nama-akun"},
           {"name": "Cari info anime", "value":"anime nama-anime", "inline":True},
           {"name": "Cari lirik lagu:", "value":"lirik, lyric, lyrics", "inline":True},
-        {"name": "Cari info kamus bahasa", "value":"kamus, dict, dictionary", "inline":True},
+          {"name": "Cari info kamus bahasa", "value":"kamus, dict, dictionary", "inline":True},
           {"name": "Cari gambar atau wallpaper", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
           {"name": "Inspirasi kopi untuk menemani hari", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
           {"name": "Tebak usia iseng-isengan", "value":"usia *nama*", "inline":True},
@@ -32,7 +32,7 @@ class Bot_Help(object):
           {"name": "Random username", "value":"username", "inline":True},
           {"name": "Cari info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
           {"name": "Game Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
-          {"name": "Game #1 (BADUT-CUY)", "value":"`. start`, `. a spasi [angka 1 - 9], . stop`", "inline":True},
+          {"name": "Game #1 (BADUT-CUY)", "value":"`. start`, `. stop`", "inline":True},
           {"name": "Seputar reputasi member **cuyhub community**", "value":"rep help, rep @mention [angka], rep @mention", "inline":True},
         ]
       }
