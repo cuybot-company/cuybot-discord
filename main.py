@@ -1,6 +1,7 @@
 import os
 import locale
 import helper.constants as c
+import re
 
 from response.status import Bot_Status
 from response.welcome import Bot_Welcome
@@ -24,19 +25,22 @@ from response.word import Dictionary
 from response.anime import Anime
 from response.face import Face
 from response.random_coffee import Coffee
+from response.bot_tictactoe import TicTacToeBot
+from config.liveserver import liveserver
+
 
 locale.setlocale(locale.LC_ALL, '')
-from config.liveserver import liveserver
+
 
 @c.client.event
 async def on_ready():
     print('logged in as {0.user} '.format(c.client))
 
-
 @c.client.event
 async def on_message(message):
     if message.author == c.client.user:
         return
+
 
     sender = message.author
     user_message = message.content
@@ -65,6 +69,7 @@ async def on_message(message):
     _anime = Anime(user_message, bot_send)
     _face = Face(user_message, bot_send)
     _coffee = Coffee(user_message, bot_send)
+    _ttt = TicTacToeBot(sender, c.client, user_message, bot_say, bot_send)
     
     await _botHelp.info()
     await _botStatus.check()
@@ -88,6 +93,7 @@ async def on_message(message):
     await _anime.info()
     await _face.guess_the_face()
     await _coffee.findOne()
+    await _ttt.begin()
 
 liveserver()
 c.client.run(os.getenv('TOKEN'))
