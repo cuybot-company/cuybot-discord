@@ -33,6 +33,7 @@ class Bot_Help(c.cog):
           {"name": "Cari info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
           {"name": "Game Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
           {"name": "Game #1 (BADUT-CUY)", "value":"`. start`, `. stop`", "inline":True},
+          {"name": "Game #2 (Tic Tac Toe) Bot", "value":"tic start", "inline":True},
           {"name": "Seputar reputasi member **cuyhub community**", "value":"rep help, rep @mention [angka], rep @mention", "inline":True},
         ]
       }
