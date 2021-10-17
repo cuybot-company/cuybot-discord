@@ -1,10 +1,11 @@
 import discord
+import datetime
 
 def embeed(title, desc, color="", arr = {}):
     if color == "":
         color = discord.Color.random()
 
-    embed = discord.Embed(title=title, description=desc, color=color)
+    embed = discord.Embed(title=title, description=desc, color=color, timestamp=datetime.datetime.utcnow())
 
     if len(arr) > 0:
 
