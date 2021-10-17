@@ -11,7 +11,7 @@ menang = True
 seri = True
 message = ""
 
-class TicTacToeBot(object):
+class TicTacToeBot(c.cog):
     def __init__(self, client):
         self.client = client
         DiscordComponents(self.client)
