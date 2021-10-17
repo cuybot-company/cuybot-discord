@@ -176,28 +176,3 @@ def minimax(board, depth, isMaximizing):
                 if (score < bestScore):
                     bestScore = score
         return bestScore
-
-
-
-# setPosition(0)
-# playerMove()
-
-# computerMove()
-
-# setPosition(1)
-# playerMove()
-
-# computerMove()
-
-# setPosition(6)
-# playerMove()
-
-# computerMove()
-
-# setPosition(5)
-# playerMove()
-
-# computerMove()
-
-# setPosition(8)
-# playerMove()

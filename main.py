@@ -1,7 +1,6 @@
 import os
 import locale
 import helper.constants as c
-import re
 
 from response.status import Bot_Status
 from response.welcome import Bot_Welcome
