@@ -49,9 +49,9 @@ class BadutStart(c.cog):
                 while True:
                     if turn == 0 and ketemu == False:
                         end = True
-                        await message.edit(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start`", components=[])
+                        await message.edit(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`", components=[])
                     elif end and ketemu:
-                        await message.edit("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(badut)  + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?", components=[])
+                        await message.edit("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(badut)  + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/. start` sekarang! berani?", components=[])
                             
                     interaction = await self.client.wait_for("button_click", check = lambda i: i.custom_id in buttons)
                     button_select = int(interaction.custom_id)
