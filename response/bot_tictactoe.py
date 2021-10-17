@@ -1,6 +1,7 @@
 import random
 import helper.tictactoe as ttt
 from discord_components import DiscordComponents, Button, ButtonStyle
+import helper.constants as c
 
 component = []
 papan = []
@@ -11,17 +12,17 @@ seri = True
 message = ""
 
 class TicTacToeBot(object):
-    def __init__(self, sender, client, user_message, bot_say, bot_send):
-        self.sender = sender
-        self.user_message = user_message
-        self.bot_say = bot_say
-        self.bot_send = bot_send
+    def __init__(self, client):
         self.client = client
-
         DiscordComponents(self.client)
 
-    async def begin(self):
-        if self.user_message.startswith("cuy/tic start"):
+    @c.cmd.command(name="tic")
+    async def begin(self, ctx):
+
+        user_message = ctx.message.content
+        bot_send = ctx.message.reply
+
+        if 'start' in user_message:
             global papan
             global giliran
             global end
@@ -68,7 +69,7 @@ class TicTacToeBot(object):
                     
                     giliran = "player"
 
-                message = await self.bot_send(f"Game Tic Tac Toe started \n {giliran.capitalize()} Jalan", components=component)
+                message = await bot_send(f"Game Tic Tac Toe started \n {giliran.capitalize()} Jalan", components=component)
 
                 while True:
 
@@ -135,10 +136,12 @@ class TicTacToeBot(object):
                     await message.edit("Jalan Lagi bro", components=component)
 
             else:
-                await self.bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
+                await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
 
-        elif self.user_message.startswith("cuy/tic stop"):
+        elif 'stop' in user_message:
             await message.edit(':rage: PAYAH! Permainan **TicTacToe dihentikan** :rage: \n kena mental boss?', components=[])
             ttt.clearGame()
             end = True
-            
+
+def setup(client):
+    client.add_cog(TicTacToeBot(client))
