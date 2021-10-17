@@ -32,7 +32,7 @@ class Bot_Help(object):
           {"name": "Random username", "value":"username", "inline":True},
           {"name": "Cari info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
           {"name": "Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
-          {"name": "Game #1 (BADUT-CUY)", "value":"`. start`, `. a spasi [angka 1 - 9], . stop`", "inline":True},
+          {"name": "Game #1 (BADUT-CUY)", "value":"`. start`, `. stop`", "inline":True},
           {"name": "Game #2 (Tic Tac Toe) Bot", "value":"`tic start`", "inline":True},
           {"name": "Seputar reputasi member **cuyhub community**", "value":"rep help, rep @mention [angka], rep @mention", "inline":True},
         ]
