@@ -2,12 +2,14 @@ import api.data_dota as api
 import helper.constants as c
 from datetime import datetime
 
-class Dota(object):
-  def __init__(self, user_message, bot_send):
-    self.user_message = user_message
-    self.bot_send = bot_send
-  async def live(self):
-    if any(x in self.user_message for x in c.request_dota):
+class Dota(c.cog):
+  def __init__(self, client):
+    self.client = client
+  @c.cmd.command(name="dota")
+  async def live(self, ctx):
+    user_message = ctx.message.content
+    bot_send = ctx.message.reply
+    if any(x in user_message for x in c.request_dota):
       data = api.get_dota_live()
 
       i = 0
@@ -18,4 +20,7 @@ class Dota(object):
           list += 1
           live = live + '\n ' + str(list) + '. ' + data[i]['team_name_radiant'] + ' - ' + data[i]['team_name_dire'] + '(' + str(datetime.fromtimestamp(data[i]['activate_time'])) + ' UTC)'
         i += 1
-      await self.bot_send(live)
+      await bot_send(live)
+
+def setup(client):
+    client.add_cog(Dota(client))

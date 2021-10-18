@@ -1,5 +1,6 @@
 import random
 import api.data_user_request as api
+import helper.constants as c
 from discord_components import DiscordComponents, Button, ButtonStyle
 
 #initial game badut
@@ -10,18 +11,17 @@ component = []
 badut = 0
 ketemu = True
 
-class BadutStart:
-    def __init__(ctx, sender, client, user_message, bot_say, bot_send):
-        ctx.sender = sender
-        ctx.user_message = user_message
-        ctx.bot_say = bot_say
-        ctx.bot_send = bot_send
-        ctx.client = client
+class BadutStart(c.cog):
+    def __init__(self, client):
+        self.client = client
 
-        DiscordComponents(ctx.client)
-
-    async def begin(ctx):
-        if ctx.user_message.startswith('cuy/. start'):
+        DiscordComponents(self.client)
+    @c.cmd.command(name="badut")
+    async def begin(self, ctx):
+        user_message = ctx.message.content
+        bot_say = ctx.message.channel.send
+        bot_send = ctx.message.reply
+        if 'start' in user_message:
             global end
             global turn
             global message
@@ -44,7 +44,7 @@ class BadutStart:
                     [Button(label="-", custom_id="7"),Button(label="-", custom_id="8"),Button(label="-", custom_id="9")]
                 ]
 
-                message = await ctx.bot_say(f":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`pilih salah satu button`",components=component)
+                message = await bot_say(f":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`pilih salah satu button`",components=component)
                 
                 while True:
                     if turn == 0 and ketemu == False:
@@ -53,7 +53,7 @@ class BadutStart:
                     elif end and ketemu:
                         await message.edit("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(badut)  + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/. start` sekarang! berani?", components=[])
                             
-                    interaction = await ctx.client.wait_for("button_click", check = lambda i: i.custom_id in buttons)
+                    interaction = await self.client.wait_for("button_click", check = lambda i: i.custom_id in buttons)
                     button_select = int(interaction.custom_id)
 
                     pesan_jalan = f'Anda tinggal {turn-1} jalan lagi' if turn-1 > 0 else "Woops, kesempatan jalan sudah tidak ada lagi"
@@ -86,9 +86,9 @@ class BadutStart:
                     turn -= 1
                     await message.edit(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?", components=component)
             else:
-                await ctx.bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
+                await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
 
-        elif ctx.user_message.startswith('cuy/. stop'):
+        elif 'stop' in user_message:
             await message.edit(':rage: PAYAH! Permainan **badutcuy dihentikan** :rage:', components=[])
             end = True
 
@@ -100,3 +100,6 @@ def addPoint(person):
     if cell == None:
         api.reputation_insert(winner)
     api.reputation_update(winner, 1)
+
+def setup(client):
+    client.add_cog(BadutStart(client))
