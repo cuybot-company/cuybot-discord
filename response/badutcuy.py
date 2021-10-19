@@ -94,7 +94,7 @@ class BadutStart(c.cog):
                         await bot_say(line)
                         winnerCondition(pos)    
                         if end == True:
-                            addPoint(self.sender.id)
+                            addPoint(sender.id)
                             await bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?")
                         elif count >= 4:
                             end = True
