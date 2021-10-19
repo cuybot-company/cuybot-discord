@@ -46,7 +46,7 @@ class BadutStart(c.cog):
                   if i == 9:
                     break
                 await bot_say(line)
-                await bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/. atk [angka 1 - 9]`")    
+                await bot_say(":clap: Perkenalkan gue **BADUTCUY** :clap:\nCoba tebak gw ngumpet dimana?\n`ketik cuy/atk [angka 1 - 9]`\n\nketik `cuy/game stop` untuk menyerah")    
             else:
                 #game lagi jalan tapi ada user yang pengen ikutan
                 await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
@@ -95,16 +95,16 @@ class BadutStart(c.cog):
                         winnerCondition(pos)    
                         if end == True:
                             addPoint(self.sender.id)
-                            await bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/. start` sekarang! berani?")
+                            await bot_send("ANJIM KETAUAN! *badutcuy* ada di posisi **" + str(num) + "**" + "\n\n:first_place: CONGRATS :first_place:\nSebagai hadiahnya cuybot ngasih lu **1 point** reputasi di *cuyhub community* :star_struck:\ncek total point lu dengan cara `cuy/rep @mention`\n\nmain lagi yu? ketik `cuy/badut start` sekarang! berani?")
                         elif count >= 4:
                             end = True
-                            await bot_say(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
+                            await bot_say(":person_juggling: **Game selesai** :person_juggling:\ngak ada yang menang cuy!\nkesempatan cuma 4x tebak dalam 1 permainan, AH elah gimanasiiiii! :rage:\n\nYo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start`")
                         else:
-                            await bot_say(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?")
+                            await bot_say(":poop: Salah yeeee... :poop:\nAda yang bisa nebak lagi gw dimana?\n\nketik `cuy/game stop` untuk menyerah")
                     else:
-                        await bot_send("Sorry cuy mungkin atk itu udah di pake atau gak available")
+                        await bot_send("Sorry cuy mungkin atk itu udah di pake atau gak available\n\nketik `cuy/game stop` untuk menyerah")
                 else:
-                    await bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/. start`")
+                    await bot_say("Yo ramein mulai game **BADUTCUY** dengan cara ketik `cuy/badut start`")
     
     @c.cmd.command(name="game")
     async def stop(self, ctx):
