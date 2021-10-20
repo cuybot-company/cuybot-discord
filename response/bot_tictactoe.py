@@ -3,17 +3,17 @@ import helper.tictactoe as ttt
 from discord_components import DiscordComponents, Button, ButtonStyle
 import helper.constants as c
 
-component = []
-papan = []
-giliran = ""
-end = True
-menang = True
-seri = True
-message = ""
 
 class TicTacToeBot(c.cog):
     def __init__(self, client):
         self.client = client
+        self.component = []
+        self.giliran = ""
+        self.end = True
+        self.menang = True
+        self.seri = True
+        self.message = ''
+        self.papan = None
         DiscordComponents(self.client)
 
     @c.cmd.command(name="tic")
@@ -23,24 +23,16 @@ class TicTacToeBot(c.cog):
         bot_send = ctx.message.reply
 
         if 'start' in user_message:
-            global papan
-            global giliran
-            global end
-            global message
-            global menang
-            global seri
-            global component
-            
             buttons = ['{}'.format(x) for x in range(1,10)]
 
-            if end:
-                end = False
-                menang = False
-                seri = False
-                papan = ["bot", "player"]
-                giliran = papan[random.randint(0,1)]
+            if self.end:
+                self.end = False
+                self.menang = False
+                self.seri = False
+                self.papan = ["bot", "player"]
+                self.giliran = self.papan[random.randint(0,1)]
 
-                component = [
+                self.component = [
                     [
                         Button(label="-", custom_id="1", disabled=False),
                         Button(label="-", custom_id="2", disabled=False),
@@ -58,29 +50,29 @@ class TicTacToeBot(c.cog):
                     ]
                 ]
 
-                if giliran == "bot":
+                if self.giliran == "bot":
                     move = ttt.computerMove()+1
                     if move >= 1 and move <= 3:
-                        component[0][move - 1] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                        self.component[0][move - 1] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
                     elif move >= 4 and move <= 6:
-                        component[1][move - 4] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                        self.component[1][move - 4] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
                     elif move >= 7 and move <= 9:
-                        component[2][move - 7] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                        self.component[2][move - 7] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
                     
-                    giliran = "player"
+                    self.giliran = "player"
 
-                message = await bot_send(f"Game Tic Tac Toe started \n {giliran.capitalize()} Jalan", components=component)
+                self.message = await bot_send(f"Game Tic Tac Toe started \n {self.giliran.capitalize()} Jalan", components=self.component)
 
                 while True:
 
-                    if end and menang:
-                        await message.edit("Anjer Jago bener lu bro, sampe kalahin bot ini", components=[])
+                    if self.end and self.menang:
+                        await self.message.edit("Anjer Jago bener lu bro, sampe kalahin bot ini", components=[])
                         ttt.clearGame()
-                    elif end and seri:
-                        await message.edit("Masa seri ama bot :moyai: ", components=[])
+                    elif self.end and self.seri:
+                        await self.message.edit("Masa seri ama bot :moyai: ", components=[])
                         ttt.clearGame()
-                    elif end and not menang:
-                        await message.edit("Masa kalah ama bot :moyai: ", components=[])
+                    elif self.end and not self.menang:
+                        await self.message.edit("Masa kalah ama bot :moyai: ", components=[])
                         ttt.clearGame()
                     
                     interaction = await self.client.wait_for("button_click", check = lambda i: i.custom_id in buttons)
@@ -91,57 +83,57 @@ class TicTacToeBot(c.cog):
 
                     if not ttt.getWins():
 
-                        if giliran == "player":
+                        if self.giliran == "player":
                             if button_select >= 1 and button_select <= 3:
-                                component[0][button_select - 1] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
+                                self.component[0][button_select - 1] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
                                 ttt.setPosition(button_select - 1)
                                 ttt.playerMove()
-                                giliran = "bot"
+                                self.giliran = "bot"
 
                             elif button_select >= 4 and button_select <= 6:
-                                component[1][button_select - 4] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
+                                self.component[1][button_select - 4] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
                                 ttt.setPosition(button_select - 1)
                                 ttt.playerMove()
-                                giliran = "bot"
+                                self.giliran = "bot"
 
                             elif button_select >= 7 and button_select <= 9:
-                                component[2][button_select - 7] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
+                                self.component[2][button_select - 7] = Button(style=ButtonStyle.green, emoji=u"\u2B55", custom_id=interaction.custom_id, disabled=True)
                                 ttt.setPosition(button_select - 1)
                                 ttt.playerMove()
-                                giliran = "bot"
+                                self.giliran = "bot"
 
-                        if giliran == "bot":
+                        if self.giliran == "bot":
                             move = ttt.computerMove()+1
                             if move >= 1 and move <= 3:
-                                component[0][move - 1] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
-                                giliran = "player"
+                                self.component[0][move - 1] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                                self.giliran = "player"
                             elif move >= 4 and move <= 6:
-                                component[1][move - 4] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
-                                giliran = "player"
+                                self.component[1][move - 4] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                                self.giliran = "player"
                             elif move >= 7 and move <= 9:
-                                component[2][move - 7] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
-                                giliran = "player"
+                                self.component[2][move - 7] = Button(style=ButtonStyle.green, emoji=u"\u274C", disabled=True)
+                                self.giliran = "player"
 
                     if ttt.getWins():
                         if ttt.getWins() == "bot":
-                            end = True
+                            self.end = True
                         elif ttt.getWins() == "player":
-                            end = True
-                            menang = True
+                            self.end = True
+                            self.menang = True
                         else:
-                            end = True
-                            seri = True
+                            self.end = True
+                            self.seri = True
 
                     
-                    await message.edit("Jalan Lagi bro", components=component)
+                    await self.message.edit("Jalan Lagi bro", components=self.component)
 
             else:
                 await bot_send(":raised_hand: bentar tunggu game selesai dulu cuy! chill...:raised_hand:")
 
         elif 'stop' in user_message:
-            await message.edit(':rage: PAYAH! Permainan **TicTacToe dihentikan** :rage: \n kena mental boss?', components=[])
+            await self.message.edit(':rage: PAYAH! Permainan **TicTacToe dihentikan** :rage: \n kena mental boss?', components=[])
             ttt.clearGame()
-            end = True
+            self.end = True
 
 def setup(client):
     client.add_cog(TicTacToeBot(client))
