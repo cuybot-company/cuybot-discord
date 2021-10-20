@@ -27,20 +27,13 @@ class Gacha(c.cog):
         member_id = sender.id
         bot_send = ctx.message.reply
         user_message = ctx.message.content
-        # random_angka = random.randint(1, 200)
-        random_angka = 160
+        random_angka = random.randint(1, 200)
 
         if "gacha" in user_message:
-            # if checkNumber(member_id, random_angka):
-            #     await bot_send("yeay selamat anda menang")
-            # else:
-            #     await bot_send('Ooops, Anda Kurang Beruntung, silahkan coba lagi')
-
-            await bot_send(checkNumber(member_id, random_angka))
-            # if random_angka == api.gacha_tebak(member_id):
-            
-            # else:
-            #     await bot_send('Ooops, Anda Kurang Beruntung, silahkan coba lagi')
+            if checkNumber(member_id, random_angka):
+                await bot_send("yeay selamat anda menang")
+            else:
+                await bot_send('Ooops, Anda Kurang Beruntung, silahkan coba lagi')
 
 
 def setup(client):
@@ -52,5 +45,6 @@ def insertNumberGacha(person, number):
 
 def checkNumber(person, number):
     person = f'{str(person)}'
-    return api.gacha_tebak1(person, number)
-    # return cell
+    number = f'{str(number)}'
+
+    return api.gacha_tebak(person, number)

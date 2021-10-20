@@ -40,13 +40,7 @@ def gacha_find(id):
     cell = gacha.find(id)
     return cell
 
-def gacha_tebak(id):
-    cell = gacha_find(id)
-    if cell != None:
-        val = gacha.cell(cell.row, 2)
-        return val.value
-
-def gacha_tebak1(id, number):
+def gacha_tebak(id, number):
     num_rows = gacha.row_count - 1
     curr_row = 0
     arr = []
@@ -56,47 +50,10 @@ def gacha_tebak1(id, number):
             curr_row += 1
             row = gacha.row_values(curr_row)
             arr.append(row)
-            # return (row and (id in row) and (number in row))
         except IndexError:
-            pass
+            break
     
-    print(arr)
-            # print(number in row)
-            # print(id in row)
+    id_check = any(id in id_list for id_list in arr)
+    number_check = any(number in number_list for number_list in arr)
 
-    # return 'hai'
-
-    # return cell.get_all_values()
-    # <class 'list'>
-    # if cell != None:
-    #     if id in cell:
-    #         print(cell[1])
-    #         return cell[1]
-
-        # print(type(cell))
-        # return type(cell)
-        # for (row, col) in cell:
-        #     return row
-        # val = gacha.cell(cell.row, 2)
-        # return val
-    # return cell
-    # if cell != None:
-    #     return gacha.cell(cell.row, 2)
-        # val = reputation.cell(cell.row, 2)
-        # return val.value
-
-
-
-# def gacha_unique(id):
-#     member = gacha_find(id)
-#     if member != None:
-#     return member
-    # return (number != None)
-
-    # if cell != None:
-    #     val = gacha.cell(cell.row, 2)
-    #     return val.value
-        
-        # bikin aja, yang gacha disini aja langsung
-
-        # knp mantap kan? o
+    return (id_check and number_check)
