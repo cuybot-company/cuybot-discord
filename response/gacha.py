@@ -3,6 +3,7 @@ import random
 from random import choice
 import helper.constants as c
 import discord
+from discord.ext import commands
 
 win = False
 count = 0
@@ -28,7 +29,7 @@ class Reward(c.cog):
             await bot_send(f'Upsss! slot reward sudah dikeluarkan, angka sebelum nya **{num}** belum selesai di gacha. ketik `cuy/gacha` untuk lanjutin games')    
     else:
         await bot_send('maaf lu gak punya akses untuk eksekusi command ini')
-  
+  @commands.cooldown(1, 15, commands.BucketType.user)
   @c.cmd.command(name="gacha")
   async def gacha(self, ctx):
     global num
@@ -48,6 +49,12 @@ class Reward(c.cog):
             await bot_send(f':clap: <@{sender_id}> WIN!!\n langsung DM instagram bang de ya cuy @dea.afrizal buat dikirim reward nya. selamat!\n\n*reward didapatkan untuk pemenang yang paling cepat menang diantara pemenang2 lainnya. thank u* :clap:')
         else :
             await bot_send(f'angka reward adalah **{num}**, Lu kurang beruntung (tebakan lu **{num2}**) \nSilahkan coba lagi kuy!')
+  
+  @gacha.error
+  async def gacha_error(self, ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+      # print(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)} seconds')
+      await ctx.message.reply('`Tunggu antrian cuy, Lu dapet giliran ' + f'{round(error.retry_after, 2)}' + ' detik kemudian `')
 
 def setup(client):
     client.add_cog(Reward(client))
