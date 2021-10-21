@@ -55,9 +55,8 @@ def reward_check(id):
     else:
         return '0'
     
-def reward_win_time(id):
-    cell = reward_find(id)
-    reward.update_cell(cell.row, 3, str(time))
+def reward_win_time(id, num):
+    reward.append_row([str(id), num, str(time)])
     
 # def gacha_insert(id, number):
 #     gacha.append_row([str(id), number])

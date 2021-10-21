@@ -20,7 +20,7 @@ class Reward(c.cog):
     bot_send = ctx.message.reply
     if discord.utils.get(ctx.message.author.roles, name="Moderator 🔑"):
         if num == 0 and count == 0:
-            num = random.randint(1, 100)
+            num = random.randint(1, 40)
             count = 1
             win = False
             await bot_send(f'<@{sender_id}> lu harus dapatin angka **{num}**, goodluck! ketik `cuy/gacha` untuk menebak angka')
@@ -36,7 +36,7 @@ class Reward(c.cog):
     global win
     sender_id = ctx.message.author.id
     bot_send = ctx.message.reply
-    num2 = random.randint(1, 100)
+    num2 = random.randint(1, 40)
     if win == True:
         await bot_send(':clap: Game udah selesai ya cuy, selamat kepada pemenang reward :clap:')
     else:
