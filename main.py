@@ -12,4 +12,4 @@ for plugin in plugins:
     c.client.load_extension(f'response.{plugin[:-3]}')
     print(f'{plugin} has been loaded')
 
-c.client.run("ODk3MzE1ODIxMDQxMzc3MzQx.YWT4ew.hhSGYMsVfG7awM_QJRVmNLegmXE")
+c.client.run(os.getenv('TOKEN'))
