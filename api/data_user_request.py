@@ -5,6 +5,7 @@ time = datetime.datetime.now()
 # name_exel = 'cuybot-discord-request'
 name_exel = 'discord-test'
 cloud = gspread.service_account(filename='./config/gkt.json')
+
 excel = cloud.open(name_exel).sheet1
 reputation = cloud.open(name_exel).get_worksheet(1) # gspread only implement sheet1 so do it manually
 gacha = cloud.open(name_exel).get_worksheet(3)
@@ -32,6 +33,24 @@ def reputation_update(id, point):
     cell = reputation_find(id)
     value = reputation_value(id)
     reputation.update_cell(cell.row, 2, str(int(value) + point))
+
+def reward_insert(id, num):
+    reward.append_row([str(id), num])
+def reward_find(id):
+    cell = reward.find(str(id))
+    return cell
+def reward_value(id):
+    cell = reward_find(id)
+    if cell != None:
+        val = reward.cell(cell.row, 2)
+        return val.value
+def reward_check(id):
+    cell = reward.find(id)
+    if cell != None:
+        val = reward.cell(cell.row, 2)
+        return val.value
+    else:
+        return '0'
 
 def gacha_insert(id, number):
     gacha.append_row([str(id), number])
