@@ -1,6 +1,5 @@
 import api.data_user_request as api
 import random
-from random import choice
 import helper.constants as c
 import discord
 from discord.ext import commands
@@ -48,13 +47,32 @@ class Reward(c.cog):
             win = True
             await bot_send(f':clap: <@{sender_id}> WIN!!\n langsung DM instagram bang de ya cuy @dea.afrizal buat dikirim reward nya. selamat!\n\n*reward didapatkan untuk pemenang yang paling cepat menang diantara pemenang2 lainnya. thank u* :clap:')
         else :
-            await bot_send(f'angka reward adalah **{num}**, Lu kurang beruntung (tebakan lu **{num2}**) \nSilahkan coba lagi kuy!')
-  
+            if num != 0:
+              await bot_send(f'angka reward adalah **{num}**, Lu kurang beruntung (tebakan lu **{num2}**) \nSilahkan coba lagi kuy!')
+            else:
+              print('blm mulai')
+              return
+  @c.cmd.command(name="gcstop")
+  async def gcstop(self, ctx):
+    bot_send = ctx.message.reply
+    global win
+    global count
+    global num
+    if discord.utils.get(ctx.message.author.roles, name="Moderator 🔑") and num != 0:
+      win = False
+      count = 0
+      num = 0
+      await bot_send("**Gacha telah dihentikan**")
+    else:
+      return
+    
   @gacha.error
   async def gacha_error(self, ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-      # print(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)} seconds')
-      await ctx.message.reply('`Tunggu antrian cuy, Lu dapet giliran ' + f'{round(error.retry_after, 2)}' + ' detik kemudian `')
-
+      if num != 0:
+        await ctx.message.reply('`Tunggu antrian cuy, Lu dapet giliran ' + f'{round(error.retry_after, 2)}' + ' detik kemudian `')
+      else:
+        print('blm mulai')
+        return
 def setup(client):
     client.add_cog(Reward(client))
