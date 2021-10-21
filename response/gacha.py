@@ -47,7 +47,7 @@ class Reward(c.cog):
             win = True
             await bot_send(f':clap: <@{sender_id}> WIN!!\n langsung DM instagram bang de ya cuy @dea.afrizal buat dikirim reward nya. selamat!\n\n*reward didapatkan untuk pemenang yang paling cepat menang diantara pemenang2 lainnya. thank u* :clap:')
         else :
-            await bot_send(f'{num2} - Kurang beruntung \nSilahkan coba lagi kuy!')
+            await bot_send(f'angka reward adalah **{num}**, Lu kurang beruntung (tebakan lu **{num2}**) \nSilahkan coba lagi kuy!')
 
 def setup(client):
     client.add_cog(Reward(client))
