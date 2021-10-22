@@ -13,9 +13,14 @@ class wrmlbb(c.cog):
         if len(data) == 3:
             match = int(data[1])
             wrawal = int(data[2])
-            tWin = (match) * (wrawal/100)
-            tLose = (match) - (tWin)
-            await bot_send(f"Total kemenangan anda : {int(tWin)} \nTotal kekalahan anda  : {int(tLose)}")
+            if (match < 0 or wrawal < 0):
+                await bot_send('Sejak kapan ada match\wr minus cuk???')
+            else:
+                match = int(data[1])
+                wrawal = int(data[2])
+                tWin = (match) * (wrawal/100)
+                tLose = (match) - (tWin)
+                await bot_send(f"Total kemenangan anda : {int(tWin)} \nTotal kekalahan anda  : {int(tLose)}")
         elif len(data) == 4:
             if data[3] < data[2]:
                 #var
@@ -27,6 +32,8 @@ class wrmlbb(c.cog):
                     await bot_send('Mana bisa bambang "-_ ')
                 elif int(data[3]) > 100:
                     await bot_send('Iyain aja bang suka suka lu...')
+                elif(match < 0 or wrawal < 0 or wrakhir < 0 ):
+                    await bot_send('Sejak kapan ada match\wr minus cuk???')
                 else:
                 # var kalkulasi 
                     tWin = (match) * (wrawal/100)
@@ -46,7 +53,9 @@ class wrmlbb(c.cog):
                 if int(data[3]) == 100:
                     await bot_send('Mana bisa bambang "-_ ')
                 elif int(data[3]) > 100:
-                    await bot_send('Iyain aja bang suka suka lu...')
+                    await bot_send('Iya bang suka suka lu...')
+                elif (match < 0 or wrawal < 0 or wrakhir < 0 ):
+                    await bot_send('Sejak kapan ada match\wr minus cuk???')
                 else:
                     tWin = (match) * (wrawal/100)
                     tLose = (match) - (tWin)
@@ -57,7 +66,7 @@ class wrmlbb(c.cog):
                     win = int(final)
                     await bot_send(f'Anda membutuhkan {win} win tanpa lose untuk mendapatkan Win Rate {int(data[3])}%')
         else:
-            await bot_send("Command Help : cuy/wrcal [total match] [total wr] [target wr]")
+            await bot_send("Command Help :\n ~ cuy/wrcal [total match] [total wr] [target wr]\n~ cuy/wrcal [total match] [total wr]")
             
 def setup(client):
     client.add_cog(wrmlbb(client))
