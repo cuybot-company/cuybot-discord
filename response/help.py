@@ -1,82 +1,65 @@
 import helper.discord as d
 import helper.constants as c
-
+from discord.ext import commands
 class Bot_Help(c.cog):
   def __init__(self, client):
     self.client = client
+
+  @commands.cooldown(1, 4, commands.BucketType.user)
   @c.cmd.command(name="help")
-  async def info(self, ctx):
-    author = ctx.message.author
+  async def help(self, ctx):
     bot_send = ctx.message.reply
-    buttons = [u"\u23EA", u"\u25C0", u"\u25B6", u"\u23E9"]
-    current = 0
+    user_message = ctx.message.content
+    help_message = user_message.split(" ", 1)
+
     arr = {
       "footer": {"text": "Bot masih dalam tahap pengembangan."},
       "field": [
-        {"name": "Ping bot status:", "value": "status, stat, stats, test, ping", "inline": True},
-        {"name": "Menyapa bot", "value":"helo, hi, hai, hello", "inline":True},
-        {"name": "Pesan selamat datang:", "value":"help, bantuan, command", "inline":True},
-        {"name": "Berita", "value":"berita", "inline":True},
-        {"name": "Data covid hari ini", "value":"covid", "inline":True},
-        {"name": "Quotes untuk memotivasi diri", "value":"quotes, quote, kutipan", "inline":True},
-        {"name": "Cari info spek handphone", "value":"hp *merk_hp*, handphone, mobile, phone", "inline":True},
-        {"name": "Cari info daftar hp terbaru", "value":"hp baru, handphone baru, mobile baru, phone baru", "inline":True},
-        {"name": "Cari info akun tiktok", "value": "tt nama-akun, tiktok nama-akun"},
-        {"name": "Cari info anime", "value":"anime nama-anime", "inline":True},
-        {"name": "Cari lirik lagu:", "value":"lirik, lyric, lyrics", "inline":True},
-        {"name": "Cari info kamus bahasa", "value":"kamus, dict, dictionary", "inline":True},
-        {"name": "Cari gambar atau wallpaper", "value": "wallpaper *genre*, wp *genre*, wallpaper, wp, wallpaper list, wp list", "inline": True},
-        {"name": "Inspirasi kopi untuk menemani hari", "value":"ngopi dulu, coffee, kopi hari ini, ngopi", "inline":True},
-        {"name": "Tebak usia iseng-isengan", "value":"usia *nama*", "inline":True},
-        {"name": "Tebak wajah iseng-isengan", "value":"tebak wajah, tebak muka", "inline":True},
-        {"name": "Random username", "value":"username", "inline":True},
-        {"name": "Cari info Live Stream Dota", "value":"dotalive, dota-live, dotastream", "inline":True},
-        {"name": "Game Mobile Legends Redeem", "value":"ml, mlredeem", "inline":True},
-        {"name": "Game #1 (BADUT-CUY)", "value":"`badut start`, `atk angka[1-9]`, `game stop`", "inline":True},
-        {"name": "Game #2 (Tic Tac Toe) Bot", "value":"tic start", "inline":True},
-        {"name": "Seputar reputasi member **cuyhub community**", "value":"rep help, rep @mention [angka], rep @mention", "inline":True},
+        {
+          "name": "**Normal**", 
+          "value": "```\nhelp\nping\nhi\n \n \n \n \n \n \n```", 
+          "inline": True
+        },
+        {
+          "name": "**Info**", 
+          "value": "```\nberita\ncovid\nquote\nhp\ntiktok\nanime\nlirik\nkamus\ndotalive```", 
+          "inline": True
+        },
+        {
+          "name": "**Game**", 
+          "value": "```\nbadut\ntic\n \n \n \n \n \n \n \n```", 
+          "inline": True
+        },
+        {
+          "name": "**Lainnya**", 
+          "value": "```\nwallpaper\nngopi\nusia\nusername\ntebak\nmlredeem\nrep\n \n```", 
+          "inline": True
+        },
       ]
     }
 
-    split_field = [arr["field"][i:i + 10] for i in range(0, len(arr["field"]), 10)]
-    arr["field"] = split_field[current]
+    embed = d.embeed(
+      ":clipboard: **Cuybot Command** :clipboard:", 
+      "Prefix cuy bot adalah `cuy/`, kamu bisa mendapatkan info lebih tentang command bot dengan cara `cuy/help <command>`",
+      0xFFDB00, 
+    arr)
 
-    embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
+    await bot_send(embed=embed)
 
-    msg = await bot_send(embed=embed)
+  @help.error
+  async def help_error(self, ctx, error):
+    bot_send = ctx.message.reply
 
-    for button in buttons:
-      await msg.add_reaction(button)
+    if isinstance(error, commands.CommandOnCooldown):
+      message = f'''
+      ```command(s) masih memiliki cooldown di server ini.\nMohon tunggu {int(error.retry_after)} detik lagi dan coba lagi.```'''
 
-    while True:
-      try:
-        reaction, user = await self.client.wait_for('reaction_add', check=lambda reaction, user: user == author and reaction.emoji in buttons, timeout=60.0)
-      except:
-        await msg.clear_reactions()
-      else:
-        prev_page = current
-
-        if reaction.emoji == buttons[0]:
-          current = 0
-
-        elif reaction.emoji == buttons[1]:
-          if current > 0:
-            current -= 1
-
-        elif reaction.emoji == buttons[2]:
-          if current < len(split_field)-1:
-            current += 1
-
-        elif reaction.emoji == buttons[3]:
-          current = len(split_field)-1
-
-        for button in buttons:
-          await msg.remove_reaction(button, author)
-        
-        if current != prev_page:
-          arr["field"] = split_field[current]
-          embed = d.embeed("Cuybot Help", "Command dasar pemanggilan bot cuy/(command) tanpa tanda kurung", 0x50d396, arr)
-          await msg.edit(embed=embed)
+      embed = d.embeed(
+        ":clock5: **COMMAND COOLDOWN** :clock5:",
+        message,
+        0xFFDB00,
+      )
+      await bot_send(embed=embed)
 
 def setup(client):
     client.add_cog(Bot_Help(client))
