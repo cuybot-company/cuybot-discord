@@ -39,3 +39,20 @@ def embeed(title, desc, color="", arr = {}):
                 embed.add_field(name=arr["field"][i]["name"], value=arr["field"][i]["value"], inline=arr["field"][i]["inline"])
 
     return embed
+
+
+def embeed_help(color="", arr = {}):
+    if color == "":
+        color = discord.Color.random()
+
+    embed = discord.Embed(title=":pencil: INFO TENTANG COMMAND :pencil:", description=f'```{arr["command"]}```', color=color, timestamp=datetime.datetime.utcnow())
+
+    if len(arr) > 0:
+        embed.add_field(name="**Description**", value=f'```{arr["desc"]}```', inline=False)
+        embed.add_field(name="**Usage**", value=f'```{arr["usage"]}```', inline=False)
+        embed.add_field(name="**Aliases**", value=f'```{", ".join(arr["alias"])}```', inline=True)
+        embed.add_field(name="**Cooldown**", value=f'```{arr["cooldown"]} seconds```', inline=True)
+    
+    # embed.set_footer(text="Anda juga dapat menyebutkan bot (dengan @) untuk peganti prefix command.")
+    
+    return embed

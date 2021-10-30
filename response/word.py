@@ -1,10 +1,15 @@
 import api.data_dictionary as api
 import helper.constants as c
+import helper.command_help as cmd
+from discord.ext import commands
 
+command = next(filter(lambda x: x['name'] == "kamus", cmd.list_help_cmd))
 class Dictionary(c.cog):
   def __init__(self, client):
     self.client = client
-  @c.cmd.command(name='dictionary', aliases=['kamus', 'dict'])
+
+  @c.cmd.command(aliases=command["alias"])
+  @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
   async def Dictionary_word(self, ctx):
     bot_send = ctx.message.reply
     user_message = ctx.message.content
@@ -53,7 +58,6 @@ class Dictionary(c.cog):
       await bot_send('kata : '+data_word+'\nPelafalan : -' + data_phonetic + data_meaning)
     else:
       await bot_send('kata : '+data_word+'\nPelafalan : ' + data_phonetic + '\nAsal Muasal : ' + data_origin + data_meaning)
-"$TOKEN"
 
 def setup(client):
     client.add_cog(Dictionary(client))
