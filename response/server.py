@@ -7,6 +7,7 @@ import json
 class Server(c.cog):
     def __init__(self, client):
         self.server = client
+        
     @c.cmd.command(name="server")
     async def control(self, ctx):
         user_message = ctx.message.content

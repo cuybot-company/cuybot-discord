@@ -4,6 +4,7 @@ import helper.constants as c
 class Mobile(c.cog):
   def __init__(self, client):
     self.client = client
+    
   @c.cmd.command(name="mobile", aliases=['hp'])
   async def find_latest(self, ctx):
     user_message = ctx.message.content

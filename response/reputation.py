@@ -6,6 +6,7 @@ import helper.constants as c
 class Reputation(c.cog):
   def __init__(self, client):
     self.client = client
+    
   @c.cmd.command(name="rep")
   async def check(self, ctx):
     user_message = ctx.message.content

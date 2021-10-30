@@ -5,6 +5,7 @@ import helper.constants as c
 class Wallpaper(c.cog):
     def __init__(self, client):
         self.client = client
+        
     @c.cmd.command(name='wp', aliases=['wallpaper'])
     async def fetch(self, ctx):
       bot_send = ctx.message.reply

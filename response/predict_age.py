@@ -4,6 +4,7 @@ import helper.constants as c
 class Predict_Age(c.cog):
   def __init__(self, client):
     self.client = client
+    
   @c.cmd.command(name="usia")
   async def prediction(self, ctx):
     user_message = ctx.message.content

@@ -4,6 +4,7 @@ import discord
 class wrmlbb(c.cog):
     def __init__(self, client):
         self.client = client
+        
     @c.cmd.command(name="wrcal")
     async def itung(client, ctx):
         user_message = ctx.message.content

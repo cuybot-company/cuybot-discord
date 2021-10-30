@@ -5,10 +5,12 @@ from datetime import datetime
 class Dota(c.cog):
   def __init__(self, client):
     self.client = client
-  @c.cmd.command(name="dota")
-  async def live(self, ctx):
+
+  @c.cmd.command()
+  async def dota(self, ctx):
     user_message = ctx.message.content
     bot_send = ctx.message.reply
+    
     if any(x in user_message for x in c.request_dota):
       data = api.get_dota_live()
 

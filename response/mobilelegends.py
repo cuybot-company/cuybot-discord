@@ -4,6 +4,7 @@ import helper.constants as c
 class Mobile_Legends(c.cog):
     def __init__(self, client):
         self.client = client
+        
     @c.cmd.command(name="ml", aliases=['mlredeem'])
     async def redeem(client, ctx):
         user_message = ctx.message.content

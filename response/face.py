@@ -5,19 +5,21 @@ import discord
 class Face(c.cog):
   def __init__(self, client):
     self.client = client
-  @c.cmd.command(name="tebak")
-  async def guess_the_face(self, ctx):
+
+  @c.cmd.command()
+  async def wajah(self, ctx):
     user_message = ctx.message.content
     bot_send = ctx.message.reply
-    message = user_message.split(" ", 2)
-    if len(message) == 2:
+    message = user_message.split(" ", 1)
+    if len(message) == 1:
       await bot_send('masukan nama orang yang mau ditebak namanya cuy')
     else:
       data = api.get_face()
-      embed = discord.Embed(color = discord.Colour.red(),description= message[2] + ' wajahnya mirip ini kan?')
+      embed = discord.Embed(color = discord.Colour.red(),description= message[1] + ' wajahnya mirip ini kan?')
       embed.set_image(url = data[0]['url'])
       await bot_send(embed=embed)
-  @c.cmd.command(name="avatar")
+
+  @c.cmd.command()
   async def avatar(self, ctx):
     user_message = ctx.message.content
     bot_send = ctx.message.reply

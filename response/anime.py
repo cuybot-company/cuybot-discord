@@ -1,16 +1,22 @@
-from os import name
 import helper.constants as c
 import helper.discord as d
 import api.data_anime as api
+import helper.command_help as cmd
+from discord.ext import commands
+
+command = next(filter(lambda x: x['name'] == "anime", cmd.list_help_cmd))
 
 class Anime(c.cog):
     def __init__(self, client):
         self.client = client
-    @c.cmd.command(name="anime")
-    async def info(self, ctx):
+
+    @c.cmd.command(aliases=command["alias"])
+    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+    async def find_anime(self, ctx):
         user_message = ctx.message.content
         bot_send = ctx.message.reply
         anime = user_message.split(" ", 1)
+
         if len(anime) == 1:
             embed = d.embeed(
                 "Anime",

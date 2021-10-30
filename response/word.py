@@ -4,6 +4,7 @@ import helper.constants as c
 class Dictionary(c.cog):
   def __init__(self, client):
     self.client = client
+
   @c.cmd.command(name='dictionary', aliases=['kamus', 'dict'])
   async def Dictionary_word(self, ctx):
     bot_send = ctx.message.reply
@@ -53,7 +54,6 @@ class Dictionary(c.cog):
       await bot_send('kata : '+data_word+'\nPelafalan : -' + data_phonetic + data_meaning)
     else:
       await bot_send('kata : '+data_word+'\nPelafalan : ' + data_phonetic + '\nAsal Muasal : ' + data_origin + data_meaning)
-"$TOKEN"
 
 def setup(client):
     client.add_cog(Dictionary(client))
