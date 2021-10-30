@@ -10,7 +10,7 @@ class Quote(c.cog):
 
   @c.cmd.command(aliases=command["alias"])
   @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
-  async def find_one(self, ctx):
+  async def find_quotes(self, ctx):
     bot_send = ctx.message.reply
     await bot_send('Tunggu sebentar saya carikan dulu quotes menarik untuk kamu ')
     data = api.get_quotes()

@@ -1,12 +1,17 @@
 import helper.constants as c
 import helper.discord as d
 import api.data_tiktok as api
+import helper.command_help as cmd
+from discord.ext import commands
 
+command = next(filter(lambda x: x['name'] == "tiktok", cmd.list_help_cmd))
 
 class Tiktok(c.cog):
     def __init__(self, client):
         self.client = client
-    @c.cmd.command(name='tt', aliases=['tiktok'])
+
+    @c.cmd.command(aliases=command["alias"])
+    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
     async def find(self, ctx):
         bot_send = ctx.message.reply
         user_message = ctx.message.content

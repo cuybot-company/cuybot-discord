@@ -1,11 +1,14 @@
 import helper.constants as c
-import discord
+import helper.command_help as cmd
+from discord.ext import commands
 
+command = next(filter(lambda x: x['name'] == "wrcal", cmd.list_help_cmd))
 class wrmlbb(c.cog):
     def __init__(self, client):
         self.client = client
         
-    @c.cmd.command(name="wrcal")
+    @c.cmd.command(aliases=command["alias"])
+    @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
     async def itung(client, ctx):
         user_message = ctx.message.content
         bot_send = ctx.message.reply

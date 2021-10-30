@@ -1,13 +1,17 @@
 import helper.constants as c
 import api.data_face as api
 import discord
+import helper.command_help as cmd
+from discord.ext import commands
 
+command = next(filter(lambda x: x['name'] == "wajah", cmd.list_help_cmd))
 class Face(c.cog):
   def __init__(self, client):
     self.client = client
 
-  @c.cmd.command()
-  async def wajah(self, ctx):
+  @c.cmd.command(aliases=command["alias"])
+  @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
+  async def find_wajah(self, ctx):
     user_message = ctx.message.content
     bot_send = ctx.message.reply
     message = user_message.split(" ", 1)
@@ -20,6 +24,7 @@ class Face(c.cog):
       await bot_send(embed=embed)
 
   @c.cmd.command()
+  @commands.cooldown(1, command["cooldown"], commands.BucketType.user)
   async def avatar(self, ctx):
     user_message = ctx.message.content
     bot_send = ctx.message.reply

@@ -96,12 +96,24 @@ list_help_cmd = [
         "alias": ["dotalive", "dota-live", "dota-stream"],
         "cooldown": 5
     },
-    # {
-    #     # tictactoe
-    # },
-    # {
-    #     # badut
-    # },
+    {
+        # tictactoe
+        "name": "tictactoe",
+        "command": "cuy/tictactoe",
+        "desc": "Main Game TicTacToe",
+        "usage": "cuy/tictactoe start",
+        "alias": ["tictactoe", "tic"],
+        "cooldown": 3
+    },
+    {
+        # badut
+        "name": "badut",
+        "command": "cuy/badut",
+        "desc": "Main Game BadutCuy",
+        "usage": "cuy/badut start, cuy/atk [1 - 9], cuy/game stop",
+        "alias": ["badut"],
+        "cooldown": 3
+    },
     {
         "name": "wallpaper",
         "command": "cuy/wallpaper",
@@ -139,7 +151,7 @@ list_help_cmd = [
         "command": "cuy/wajah",
         "desc": "Menampilkan random wajah",
         "usage": "cuy/wajah [nama]",
-        "alias": ["wajah", "muka", "avatar"],
+        "alias": ["wajah", "muka"],
         "cooldown": 5
     },
     {
