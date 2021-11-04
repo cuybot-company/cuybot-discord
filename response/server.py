@@ -13,10 +13,8 @@ class Server(c.cog):
         user_message = ctx.message.content
         id_user = ctx.message.author.id
         bot_send = ctx.message.reply
-        # ID_ADMIN = [12345678910]
         data = user_message.split(" ", 1)
-        title = "Server Info"   
-        # if not self.id_user in id_admin:
+        title = "Server Info"
         
         if not id_user in json.loads(os.getenv('ID_ADMIN')):
             embed = d.embeed(title, ":warning: Anda tidak berhak memakai fitur ini, hanya boleh para admin saja :warning:")

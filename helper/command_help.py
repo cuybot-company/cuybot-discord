@@ -155,6 +155,14 @@ list_help_cmd = [
         "cooldown": 5
     },
     {
+        "name": "avatar",
+        "command": "cuy/avatar",
+        "desc": "Menampilkan random avatar",
+        "usage": "cuy/avatar [nama]",
+        "alias": ["avatar"],
+        "cooldown": 5
+    },
+    {
         "name": "mlredeem",
         "command": "cuy/mlredeem",
         "desc": "mengclaim kode redeem Mobile Legends",
@@ -177,5 +185,13 @@ list_help_cmd = [
         "usage": "cuy/wrcal [total match] [total wr] [target wr]",
         "alias": ["wrcal"],
         "cooldown": 5
-    }
+    },
+    {
+        "name": "invite",
+        "command": "cuy/invite",
+        "desc": "Menampilkan pesan invite bot dan support server",
+        "usage": "cuy/invite",
+        "alias": ["invite","inv"],
+        "cooldown": 3
+    },
 ]

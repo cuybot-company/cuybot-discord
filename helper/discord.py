@@ -48,7 +48,7 @@ def embeed_help(color="", arr = {}):
     embed = discord.Embed(title=":pencil: INFO TENTANG COMMAND :pencil:", description=f'```{arr["command"]}```', color=color, timestamp=datetime.datetime.utcnow())
 
     if len(arr) > 0:
-        embed.add_field(name="**Description**", value=f'```{arr["desc"]}```', inline=False)
+        embed.add_field(name="**Description**", value=f'```{arr["desc"].capitalize()}```', inline=False)
         embed.add_field(name="**Usage**", value=f'```{arr["usage"]}```', inline=False)
         embed.add_field(name="**Aliases**", value=f'```{", ".join(arr["alias"])}```', inline=True)
         embed.add_field(name="**Cooldown**", value=f'```{arr["cooldown"]} seconds```', inline=True)
