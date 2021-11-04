@@ -55,7 +55,7 @@ class Bot_Help(c.cog):
           },
           {
             "name": "**Lainnya**", 
-            "value": "```\nwallpaper\nngopi\nusia\nusername\nwajah\nmlredeem\nrep\nwrcal \n```", 
+            "value": "```\nwallpaper\nngopi\nusia\nusername\nwajah\nmlredeem\nrep\nwrcal\navatar \n```", 
             "inline": True
           },
         ]
