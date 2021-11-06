@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet" href="/static/index.css">
     <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}">
-    <link rel="stylesheet" href="/static/style.css">   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
     <title>CuyBot</title>
     <link rel="shortcut icon" href="../static/favicon.ico" />
 </head>
+
 <body>
     <nav>
         <img id="logobot" src="{{url_for('static', filename='BotLogo.png')}}" width="60" height="60">
@@ -26,33 +29,43 @@
             </div>
         </div>
     </nav>
-<div class="heading">
-    <h1 class="display-5 title">It's  time  to  use  CuyBot  in  your  server.</h1>
-    <p class="subtitle">CuyBot  is  a  Powerfull  Bot<br />Because  its  has  many  Features  like Entertainment,  News,  Information</p>
-    <a class="btn btn-secondary btn-lg" href="https://discord.com/oauth2/authorize?client_id=894421026841165826&permissions=8&scope=bot" role="button">Add to server</a>
-  <!--  <a class="btn btn-primary btn-lg" href="" role="button">Dashboard</a>-->
-    <br /><br /><br /><br /><br /><br />
-</div>
-<section id="about">
-    <div class="cards">
-        <div class="card">
-        <div class="card-body" style="margin-left: 50px;">
-            <h5 class="card-title">About</h5>
-            <p class="card-text">CuyBot is made by CuyBot Company Since October 2021 </p>
+    <div class="heading">
+        <h1 class="display-5 title">It's time to use CuyBot in your server.</h1>
+        <p class="subtitle">CuyBot is a Powerfull Bot<br />Because its has many Features like Entertainment, News,
+            Information</p>
+        <a class="btn btn-secondary btn-lg"
+            href="https://discord.com/api/oauth2/authorize?client_id=896441378865827881&permissions=67584&scope=bot"
+            role="button">Add to server</a>
+        <!--  <a class="btn btn-primary btn-lg" href="" role="button">Dashboard</a>-->
+        <br /><br /><br /><br /><br /><br />
+    </div>
+    <section id="about">
+        <div class="cards">
+            <div class="card">
+                <div class="card-body" style="margin-left: 50px;">
+                    <h5 class="card-title">About</h5>
+                    <p class="card-text">CuyBot is made by CuyBot Company Since October 2021 </p>
+                </div>
+            </div>
+    </section>
+    <div class="page_end">
+        <div class="footer">
+            <div class="bot-footer">
+                <img src="{{url_for('static', filename='BotLogo.png')}}" width="150"><br />
+                Copyright ©CuyBot Companny
+            </div><br />
         </div>
     </div>
-</section>
-<div class="page_end">
-    <div class="footer">
-        <div class="bot-footer">
-            <img src="{{url_for('static', filename='BotLogo.png')}}" width="150"><br />
-            Copyright ©CuyBot Companny
-        </div><br/>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="js/now-ui-kit.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="js/now-ui-kit.min.js"></script>
 </body>
+
 </html>

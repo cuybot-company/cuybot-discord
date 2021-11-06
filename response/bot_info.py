@@ -22,7 +22,7 @@ class Bot_Info(c.cog):
 
         embed = d.embeed(
             "Invite me to your server!",
-            "[**Invite CuyBot**](https://discord.com/oauth2/authorize?client_id=894421026841165826&permissions=8&scope=bot) | [**Support Server**](https://discord.com/invite/2qp6CxN8Df)",
+            "[**Invite CuyBot**](https://discord.com/oauth2/authorize?client_id=894421026841165826&permissions=67584&scope=bot) | [**Support Server**](https://discord.com/invite/2qp6CxN8Df)",
             "",
             arr
         )
